@@ -13,7 +13,7 @@ struct FocusApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CountdownView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
