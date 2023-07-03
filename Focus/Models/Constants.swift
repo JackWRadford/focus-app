@@ -9,8 +9,8 @@ import Foundation
 
 /// Default values for UserDefaults
 struct UDConstants {
-    static let focusDuration = 30
-    static let shortBreakDuration = 10
-    static let longBreakDuration = 20
-    static let breaksInterval = 2
+    static let focusDuration = 25
+    static let shortBreakDuration = 5
+    static let longBreakDuration = 30
+    static let breaksInterval = 4
 }

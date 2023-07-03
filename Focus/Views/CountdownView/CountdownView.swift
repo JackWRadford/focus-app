@@ -20,15 +20,18 @@ struct CountdownView: View {
                 Spacer()
                 
                 Text("\(cvm.time)")
-                    .font(.system(size: 50))
+                    .font(.system(size: 50).monospacedDigit())
                     .fontWeight(.bold)
                 
                 Spacer()
-                
+                                
                 HStack(alignment: .center) {
-                    Button("Reset", action: cvm.reset)
-                        .tint(.secondary)
-                        .frame(maxWidth: .infinity)
+                    if cvm.isActive {
+                        Button("Reset", action: cvm.reset)
+                            .tint(.secondary)
+                            .frame(maxWidth: .infinity)
+                    }
+                    
                     Button(action: cvm.handleAction) {
                         Text(cvm.actionLabel)
                             .fontWeight(.semibold)
@@ -36,15 +39,19 @@ struct CountdownView: View {
                             .padding([.leading, .trailing], 16)
                     }
                     .buttonStyle(.borderedProminent)
-                    .tint(cvm.isActive ? .secondary : .primary)
+                    .buttonBorderShape(.roundedRectangle(radius: 30))
+                    .tint(cvm.isActive ? cvm.isPaused ? .primary : .secondary : .primary)                    
                     .frame(maxWidth: .infinity)
-                    Button("Skip", action: cvm.skip)
-                        .tint(.secondary)
-                        .frame(maxWidth: .infinity)
+                    
+                    if cvm.isActive {
+                        Button("Skip", action: cvm.skip)
+                            .tint(.secondary)
+                            .frame(maxWidth: .infinity)
+                    }
                 }
                 .padding(.bottom)
                 
-            }            
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {presentingSettingsSheet.toggle()}) {

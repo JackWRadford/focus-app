@@ -11,5 +11,7 @@ import Foundation
 ///
 /// **DO NOT CHANGE VALUES**
 enum TimerStage: String {
-    case focus, shortBreak, longBreak
+    case focus,
+         shortBreak = "Short Break",
+         longBreak = "Long Break"
 }
