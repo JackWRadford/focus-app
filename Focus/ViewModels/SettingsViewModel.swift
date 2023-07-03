@@ -10,12 +10,12 @@ import SwiftUI
 
 class SettingsViewModal: ObservableObject {
     // Timer length
-    @AppStorage(UserDefaultsKey.focusDuration()) var focusDuration = "30"
-    @AppStorage(UserDefaultsKey.shortBreakDuration()) var shortBreakDuration = "10"
-    @AppStorage(UserDefaultsKey.longBreakDuration()) var longBreakDuration = "20"
+    @AppStorage(UserDefaultsKey.focusDuration()) var focusDuration = "\(UDConstants.focusDuration)"
+    @AppStorage(UserDefaultsKey.shortBreakDuration()) var shortBreakDuration = "\(UDConstants.shortBreakDuration)"
+    @AppStorage(UserDefaultsKey.longBreakDuration()) var longBreakDuration = "\(UDConstants.longBreakDuration)"
     
     // Session
-    @AppStorage(UserDefaultsKey.breaksInterval()) var breaksInterval = "2"
+    @AppStorage(UserDefaultsKey.breaksInterval()) var breaksInterval = "\(UDConstants.breaksInterval)"
     @AppStorage(UserDefaultsKey.autoStartFocus()) var autoStartFocus = true
     @AppStorage(UserDefaultsKey.autoStartBreaks()) var autoStartBreaks = true
     

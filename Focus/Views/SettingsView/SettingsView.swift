@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var svm = SettingsViewModal()
+    @StateObject var svm = SettingsViewModal()
     
     var body: some View {
         NavigationStack {

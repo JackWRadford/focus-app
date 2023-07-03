@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD9760F52A51FC4F0032216F /* TimerStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9760F42A51FC4F0032216F /* TimerStage.swift */; };
+		DD9760F82A5369230032216F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9760F72A5369230032216F /* Constants.swift */; };
 		DDA4B6F62A4A27AB004C56FE /* FocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4B6F52A4A27AB004C56FE /* FocusApp.swift */; };
 		DDA4B6F82A4A27AB004C56FE /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4B6F72A4A27AB004C56FE /* CountdownView.swift */; };
 		DDA4B6FA2A4A27AC004C56FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA4B6F92A4A27AC004C56FE /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD9760F42A51FC4F0032216F /* TimerStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStage.swift; sourceTree = "<group>"; };
+		DD9760F72A5369230032216F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DDA4B6F22A4A27AB004C56FE /* Focus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA4B6F52A4A27AB004C56FE /* FocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusApp.swift; sourceTree = "<group>"; };
 		DDA4B6F72A4A27AB004C56FE /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
@@ -89,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD9760F62A51FC7E0032216F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				DD9760F42A51FC4F0032216F /* TimerStage.swift */,
+				DDA4B7322A50813C004C56FE /* UserDefaultsKey.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		DDA4B6E92A4A27AB004C56FE = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +125,7 @@
 		DDA4B6F42A4A27AB004C56FE /* Focus */ = {
 			isa = PBXGroup;
 			children = (
+				DD9760F62A51FC7E0032216F /* Enums */,
 				DDA4B7352A51CDAE004C56FE /* Models */,
 				DDA4B7362A51CDD4004C56FE /* Views */,
 				DDA4B7392A51CE84004C56FE /* ViewModels */,
@@ -155,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				DDA4B6FE2A4A27AC004C56FE /* Persistence.swift */,
-				DDA4B7322A50813C004C56FE /* UserDefaultsKey.swift */,
+				DD9760F72A5369230032216F /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -325,11 +339,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD9760F82A5369230032216F /* Constants.swift in Sources */,
 				DDA4B6FF2A4A27AC004C56FE /* Persistence.swift in Sources */,
 				DDA4B7272A4B847D004C56FE /* CountdownViewModel.swift in Sources */,
 				DDA4B6F82A4A27AB004C56FE /* CountdownView.swift in Sources */,
 				DDA4B7292A4CD18D004C56FE /* SettingsView.swift in Sources */,
 				DDA4B7332A50813C004C56FE /* UserDefaultsKey.swift in Sources */,
+				DD9760F52A51FC4F0032216F /* TimerStage.swift in Sources */,
 				DDA4B7022A4A27AC004C56FE /* Focus.xcdatamodeld in Sources */,
 				DDA4B6F62A4A27AB004C56FE /* FocusApp.swift in Sources */,
 				DDA4B72B2A4CE0FB004C56FE /* SettingsViewModel.swift in Sources */,

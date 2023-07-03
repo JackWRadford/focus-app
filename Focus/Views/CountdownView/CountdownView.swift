@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CountdownView: View {
-    @StateObject private var countdownVm = CountdownViewModel()
+    @StateObject private var cvm = CountdownViewModel()
+    
     @State private var presentingSettingsSheet = false
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -18,21 +19,30 @@ struct CountdownView: View {
                 
                 Spacer()
                 
-                Text("\(countdownVm.time)")
+                Text("\(cvm.time)")
                     .font(.system(size: 50))
                     .fontWeight(.bold)
                 
                 Spacer()
                 
-                Button(action: handlePress) {
-                    Text(countdownVm.isActive ? "Cancel" :"Focus")
-                        .fontWeight(.semibold)
-                        .padding([.bottom, .top], 8)
-                        .padding([.leading, .trailing], 16)
+                HStack(alignment: .center) {
+                    Button("Reset", action: cvm.reset)
+                        .tint(.secondary)
+                        .frame(maxWidth: .infinity)
+                    Button(action: cvm.handleAction) {
+                        Text(cvm.actionLabel)
+                            .fontWeight(.semibold)
+                            .padding([.bottom, .top], 8)
+                            .padding([.leading, .trailing], 16)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(cvm.isActive ? .secondary : .primary)
+                    .frame(maxWidth: .infinity)
+                    Button("Skip", action: cvm.skip)
+                        .tint(.secondary)
+                        .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
                 .padding(.bottom)
-                .tint(countdownVm.isActive ? .secondary : .primary)
                 
             }            
             .toolbar {
@@ -48,16 +58,7 @@ struct CountdownView: View {
             }
         }
         .onReceive(timer) { _ in
-            countdownVm.updateCountdown()
-        }
-    }
-    
-    /// Reset coundown if active, otherwise start the countdown
-    private func handlePress() {
-        if (countdownVm.isActive) {
-            countdownVm.reset()
-        } else {
-            countdownVm.start(minutes: countdownVm.minutes)
+            cvm.updateCountdown()
         }
     }
 }

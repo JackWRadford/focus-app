@@ -6,51 +6,117 @@
 //
 
 import Foundation
+import SwiftUI
 
-class CountdownViewModel: ObservableObject {    
-    @Published var isActive = false
-    @Published var time: String = "5:00"
-    @Published var minutes: Float = 5.0 {
-        // Update time when minutes is changed
-        didSet {
-            time = "\(Int(minutes)):00"
+class CountdownViewModel: ObservableObject {
+    // UserDefaults timer values
+    @AppStorage(UserDefaultsKey.endDate()) var endDate = Date().timeIntervalSince1970
+    @AppStorage(UserDefaultsKey.durationRemaining()) var durationRemaining = 0.0
+    @AppStorage(UserDefaultsKey.isActive()) var isActive = false
+    @AppStorage(UserDefaultsKey.isPaused()) var isPaused = false
+    @AppStorage(UserDefaultsKey.timerStage()) var timerStage = TimerStage.focus.rawValue
+    @AppStorage(UserDefaultsKey.focusDuration()) var focusDuration = UDConstants.focusDuration
+    @AppStorage(UserDefaultsKey.shortBreakDuration()) var shortBreakDuration = UDConstants.shortBreakDuration
+    @AppStorage(UserDefaultsKey.longBreakDuration()) var longBreakDuration = UDConstants.longBreakDuration
+    
+    @Published var timeDiff: Double? = nil
+    
+    /// The string showing time remaining
+    var time: String {
+        if let timeDiff {
+            return timeStringFrom(diff: timeDiff)
+        } else {
+            return "\(focusDuration):00"
         }
     }
     
-    private var initialTime = 0
-    private var endDate = Date()
-    
-    /// Start the pomodoro timer
-    func start(minutes: Float) {
-        initialTime = Int(minutes)
-        endDate = Date()
-        endDate = Calendar.current.date(byAdding: .minute, value: Int(minutes), to: endDate)!
-        isActive = true
+    /// The initial duration of the countdown
+    var startMinutes: Int {
+        focusDuration
     }
     
-    func reset() {
-        minutes = Float(initialTime)
-        isActive = false
+    /// Label for the main countdown button
+    var actionLabel: String {
+        return isActive ? (isPaused ? "Resume" : "Pause") : "Focus"
     }
     
-    func updateCountdown() {
-        guard isActive else { return }
-        
-        let now = Date()
-        let diff = endDate.timeIntervalSince1970 - now.timeIntervalSince1970
-        
-        if diff <= 0 {
-            isActive = false
-            time = "0:00"            
-            return
+    init() {
+        if (isActive) {
+            if (isPaused) {
+                timeDiff = durationRemaining
+            } else {
+                updateCountdown()
+            }
         }
-        
+    }
+    
+    /// Get `time` formatted string from a TimeInterval (a.k.a. Double) `diff`
+    private func timeStringFrom(diff: TimeInterval) -> String {
         let date = Date(timeIntervalSince1970: diff)
         let calendar = Calendar.current
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         
-        self.minutes = Float(minutes)
-        time = String(format: "%d:%02d", minutes, seconds)
+        return String(format: "%d:%02d", minutes, seconds)
+    }
+    
+    /// Start, resume or pause the countdown depending on `isActive` and `isPaused`
+    func handleAction() {
+        if (isActive) {
+            isPaused ? resume() : pause()
+        } else {
+            start()
+        }
+    }
+    
+    /// Start the  countdown. Sets the `endDate`
+    func start() {
+        isActive = true
+        let now = Date()
+        endDate = Calendar.current.date(byAdding: .minute, value: startMinutes, to: now)!.timeIntervalSince1970
+    }
+    
+    /// Pause the countdown. Sets the `durationRemaining`
+    func pause() {
+        isPaused = true
+        let now = Date()
+        let diff = endDate - now.timeIntervalSince1970
+        durationRemaining = diff
+    }
+    
+    /// Resume the countdown. Sets the new `endDate` from the `durationRemaining`.
+    func resume() {
+        isPaused = false
+        let now = Date()
+        endDate = Calendar.current.date(byAdding: .second, value: Int(durationRemaining), to: now)!.timeIntervalSince1970
+    }
+    
+    /// Reset the countdown.
+    func reset() {
+        isActive = false
+        isPaused = false
+        timeDiff = nil
+    }
+    
+    /// Skip the current countdown stage (`TimerStage`).
+    func skip() {
+        
+    }
+    
+    /// Calculates the `timeDiff` (The TimeInterval between now and the `endDate`).
+    func updateCountdown() {
+        guard isActive && !isPaused else { return }
+        
+        let now = Date()
+        let diff = endDate - now.timeIntervalSince1970
+        
+        // If the countdown is done, set the timeDiff to 0.0 (00:00)
+        if diff <= 0 {
+            isActive = false
+            timeDiff = 0.0
+            return
+        }
+        
+        timeDiff = diff
     }
 }
