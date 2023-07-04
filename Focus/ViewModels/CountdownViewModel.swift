@@ -15,11 +15,24 @@ class CountdownViewModel: ObservableObject {
     @AppStorage(UserDefaultsKey.isActive()) var isActive = false
     @AppStorage(UserDefaultsKey.isPaused()) var isPaused = false
     @AppStorage(UserDefaultsKey.timerStage()) var timerStage = TimerStage.focus.rawValue
+    @AppStorage(UserDefaultsKey.breaksInterval()) var breaksInterval = UDConstants.breaksInterval
+    @AppStorage(UserDefaultsKey.focusStagesDone()) var focusStagesDone = UDConstants.focusStagesDone
     @AppStorage(UserDefaultsKey.focusDuration()) var focusDuration = UDConstants.focusDuration
     @AppStorage(UserDefaultsKey.shortBreakDuration()) var shortBreakDuration = UDConstants.shortBreakDuration
     @AppStorage(UserDefaultsKey.longBreakDuration()) var longBreakDuration = UDConstants.longBreakDuration
     
     @Published var timeDiff: Double? = nil
+    
+    /// The `timerStage` as a TimerStage enum value
+    var stage: TimerStage {
+        get {
+            TimerStage(rawValue: timerStage) ?? TimerStage.focus
+        }
+        set {
+            // timerStage is stored as a String in UserDefaults
+            timerStage = newValue.rawValue
+        }
+    }
     
     /// The string showing time remaining
     var time: String {
@@ -96,13 +109,23 @@ class CountdownViewModel: ObservableObject {
         isActive = false
         isPaused = false
         timeDiff = nil
+        focusStagesDone = 0
+        stage = .focus
     }
     
-    /// Skip the current countdown stage (`TimerStage`).
-    func skip() {
-        
+    /// Go to the next (`stage`).
+    func nextStage() {
+        switch stage {
+        case .focus:
+            focusStagesDone += 1
+            stage = focusStagesDone < breaksInterval ? .shortBreak : .longBreak
+        case .shortBreak:
+            stage = .focus
+        case .longBreak:
+            focusStagesDone = 0
+            stage = .focus
+        }
     }
-    
     /// Calculates the `timeDiff` (The TimeInterval between now and the `endDate`).
     func updateCountdown() {
         guard isActive && !isPaused else { return }

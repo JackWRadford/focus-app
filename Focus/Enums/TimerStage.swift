@@ -12,6 +12,18 @@ import Foundation
 /// **DO NOT CHANGE VALUES**
 enum TimerStage: String {
     case focus,
-         shortBreak = "Short Break",
-         longBreak = "Long Break"
+         shortBreak,
+         longBreak
+    
+    /// Provides a user facing string
+    func getString() -> String {
+        switch self {
+        case .focus:
+            return "Focus"
+        case .shortBreak:
+            return "Short Focus"
+        case.longBreak:
+            return "Long Focus"
+        }
+    }
 }

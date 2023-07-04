@@ -15,7 +15,7 @@ enum UserDefaultsKey: String {
          notificationsEnabled, vibrateOnSilent, longBreakDuration,
          shortBreakDuration, focusDuration, endDate,
          isPaused, durationRemaining, timerStage,
-         isActive
+         isActive, focusStagesDone
     
     /// Return the rawValue when called as a function
     ///

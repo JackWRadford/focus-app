@@ -44,7 +44,7 @@ struct CountdownView: View {
                     .frame(maxWidth: .infinity)
                     
                     if cvm.isActive {
-                        Button("Skip", action: cvm.skip)
+                        Button("Skip", action: cvm.nextStage)
                             .tint(.secondary)
                             .frame(maxWidth: .infinity)
                     }
@@ -52,6 +52,8 @@ struct CountdownView: View {
                 .padding(.bottom)
                 
             }
+            .navigationTitle(cvm.stage.getString())
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {presentingSettingsSheet.toggle()}) {

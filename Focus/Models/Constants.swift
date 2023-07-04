@@ -13,4 +13,5 @@ struct UDConstants {
     static let shortBreakDuration = 5
     static let longBreakDuration = 30
     static let breaksInterval = 4
+    static let focusStagesDone = 0
 }
