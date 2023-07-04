@@ -21,9 +21,9 @@ enum TimerStage: String {
         case .focus:
             return "Focus"
         case .shortBreak:
-            return "Short Focus"
+            return "Short Break"
         case.longBreak:
-            return "Long Focus"
+            return "Long Break"
         }
     }
 }

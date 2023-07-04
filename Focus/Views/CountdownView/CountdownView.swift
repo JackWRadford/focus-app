@@ -19,6 +19,10 @@ struct CountdownView: View {
                 
                 Spacer()
                 
+                Text(cvm.stage != .focus ? cvm.stage.getString() : "")
+                    .font(.headline)
+                    .frame(minHeight: 24)
+                
                 Text("\(cvm.time)")
                     .font(.system(size: 50).monospacedDigit())
                     .fontWeight(.bold)
@@ -52,8 +56,6 @@ struct CountdownView: View {
                 .padding(.bottom)
                 
             }
-            .navigationTitle(cvm.stage.getString())
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {presentingSettingsSheet.toggle()}) {
