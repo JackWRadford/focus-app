@@ -60,7 +60,7 @@ struct CountdownView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {presentingSettingsSheet.toggle()}) {
                         Image(systemName: "gearshape.fill")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.primary)
                     }
                 }
             }

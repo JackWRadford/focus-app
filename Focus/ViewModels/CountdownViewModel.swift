@@ -39,13 +39,20 @@ class CountdownViewModel: ObservableObject {
         if let timeDiff {
             return timeStringFrom(diff: timeDiff)
         } else {
-            return "\(focusDuration):00"
+            return "\(startMinutes):00"
         }
     }
     
     /// The initial duration of the countdown
     var startMinutes: Int {
-        focusDuration
+        switch stage {
+        case .focus:
+            return focusDuration
+        case .shortBreak:
+            return shortBreakDuration
+        case .longBreak:
+            return longBreakDuration
+        }
     }
     
     /// Label for the main countdown button
@@ -115,6 +122,7 @@ class CountdownViewModel: ObservableObject {
     
     /// Go to the next (`stage`).
     func nextStage() {
+        // Update stage
         switch stage {
         case .focus:
             focusStagesDone += 1
@@ -125,7 +133,12 @@ class CountdownViewModel: ObservableObject {
             focusStagesDone = 0
             stage = .focus
         }
+        // Update timer
+        isActive = false
+        isPaused = false
+        timeDiff = nil
     }
+    
     /// Calculates the `timeDiff` (The TimeInterval between now and the `endDate`).
     func updateCountdown() {
         guard isActive && !isPaused else { return }
@@ -136,7 +149,7 @@ class CountdownViewModel: ObservableObject {
         // If the countdown is done, set the timeDiff to 0.0 (00:00)
         if diff <= 0 {
             isActive = false
-            timeDiff = 0.0
+            timeDiff = nil
             return
         }
         
