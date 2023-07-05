@@ -62,7 +62,8 @@ class CountdownViewModel: ObservableObject {
     
     /// Label for the main countdown button
     var actionLabel: String {
-        return isActive ? (isPaused ? "Resume" : "Pause") : "Focus"
+        return isActive ?
+        (isPaused ? "Resume" : "Pause"): (stage == .focus ? "Focus" : "Start")
     }
     
     init() {
