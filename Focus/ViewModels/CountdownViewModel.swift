@@ -23,6 +23,11 @@ class CountdownViewModel: ObservableObject {
     
     @Published var timeDiff: Double? = nil
     
+    /// If the pomodoro session has started
+    var sessionStarted: Bool {
+        isActive || focusStagesDone > 0
+    }
+    
     /// The `timerStage` as a TimerStage enum value
     var stage: TimerStage {
         get {

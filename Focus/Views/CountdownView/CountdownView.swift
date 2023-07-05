@@ -30,7 +30,7 @@ struct CountdownView: View {
                 Spacer()
                                 
                 HStack(alignment: .center) {
-                    if cvm.isActive {
+                    if cvm.sessionStarted {
                         Button("Reset", action: cvm.reset)
                             .tint(.secondary)
                             .frame(maxWidth: .infinity)
@@ -47,7 +47,7 @@ struct CountdownView: View {
                     .tint(cvm.isActive ? cvm.isPaused ? .primary : .secondary : .primary)                    
                     .frame(maxWidth: .infinity)
                     
-                    if cvm.isActive {
+                    if cvm.sessionStarted {
                         Button("Skip", action: cvm.nextStage)
                             .tint(.secondary)
                             .frame(maxWidth: .infinity)
