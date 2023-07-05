@@ -27,6 +27,15 @@ struct CountdownView: View {
                     .font(.system(size: 50).monospacedDigit())
                     .fontWeight(.bold)
                 
+                // Focus stage indicator dots
+                HStack {
+                    ForEach(1...cvm.breaksInterval, id: \.self) { index in
+                        Circle()
+                            .fill(index <= cvm.focusStagesDone ? .primary : .secondary)
+                            .frame(width: 12)
+                    }
+                }
+                
                 Spacer()
                                 
                 HStack(alignment: .center) {
