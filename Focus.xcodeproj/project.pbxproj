@@ -24,6 +24,7 @@
 		DDA4B72F2A4D77A4004C56FE /* TextFieldSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4B72E2A4D77A4004C56FE /* TextFieldSettingView.swift */; };
 		DDA4B7312A4E054A004C56FE /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4B7302A4E054A004C56FE /* HideKeyboard.swift */; };
 		DDA4B7332A50813C004C56FE /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4B7322A50813C004C56FE /* UserDefaultsKey.swift */; };
+		DDAA98872A56A8D700921DE9 /* FocusStageDotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA98862A56A8D700921DE9 /* FocusStageDotsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		DDA4B72E2A4D77A4004C56FE /* TextFieldSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSettingView.swift; sourceTree = "<group>"; };
 		DDA4B7302A4E054A004C56FE /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		DDA4B7322A50813C004C56FE /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		DDAA98862A56A8D700921DE9 /* FocusStageDotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusStageDotsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				DDA4B6F72A4A27AB004C56FE /* CountdownView.swift */,
+				DDAA98862A56A8D700921DE9 /* FocusStageDotsView.swift */,
 			);
 			path = CountdownView;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDAA98872A56A8D700921DE9 /* FocusStageDotsView.swift in Sources */,
 				DD9760F82A5369230032216F /* Constants.swift in Sources */,
 				DDA4B6FF2A4A27AC004C56FE /* Persistence.swift in Sources */,
 				DDA4B7272A4B847D004C56FE /* CountdownViewModel.swift in Sources */,

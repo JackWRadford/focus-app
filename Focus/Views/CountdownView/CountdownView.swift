@@ -15,7 +15,7 @@ struct CountdownView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0) {
                 
                 Spacer()
                 
@@ -26,15 +26,12 @@ struct CountdownView: View {
                 Text("\(cvm.time)")
                     .font(.system(size: 50).monospacedDigit())
                     .fontWeight(.bold)
+                    .padding(.top, 20)
+                    .padding(.bottom, 10)
                 
                 // Focus stage indicator dots
-                HStack {
-                    ForEach(1...cvm.breaksInterval, id: \.self) { index in
-                        Circle()
-                            .fill(index <= cvm.focusStagesDone ? .primary : .secondary)
-                            .frame(width: 12)
-                    }
-                }
+                FocusStageDotsView()
+                    .environmentObject(cvm)
                 
                 Spacer()
                                 
