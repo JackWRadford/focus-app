@@ -36,29 +36,14 @@ struct CountdownView: View {
                 Spacer()
                                 
                 HStack(alignment: .center) {
-                    if cvm.sessionStarted {
-                        Button("Reset", action: cvm.reset)
-                            .tint(.secondary)
-                            .frame(maxWidth: .infinity)
-                    }
+                    ResetButtonView()
+                        .environmentObject(cvm)
                     
-                    Button(action: cvm.handleAction) {
-                        Text(cvm.actionLabel)
-                            .fontWeight(.semibold)
-                            .padding([.bottom, .top], 8)
-                            .padding([.leading, .trailing], 16)
-                            .foregroundStyle(.background)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.roundedRectangle(radius: 30))
-                    .tint(cvm.isActive ? cvm.isPaused ? .primary : .secondary : .primary)                    
-                    .frame(maxWidth: .infinity)
+                    MainButtonView()
+                        .environmentObject(cvm)
                     
-                    if cvm.sessionStarted {
-                        Button("Skip", action: cvm.nextStage)
-                            .tint(.secondary)
-                            .frame(maxWidth: .infinity)
-                    }
+                    SkipButtonView()
+                        .environmentObject(cvm)
                 }
                 .padding(.bottom)
                 
