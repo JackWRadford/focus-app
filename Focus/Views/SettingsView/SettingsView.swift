@@ -20,15 +20,17 @@ struct SettingsView: View {
                     TextFieldSettingView(label: "Long Break", text: $svm.longBreakDuration)
                 }
                 
-                Section("Session") {
+                Section {
                     TextFieldSettingView(label: "Breaks interval", text: $svm.breaksInterval)
-                    Toggle("Auto-start Focus", isOn: $svm.autoStartFocus)
-                    Toggle("Auto-start Breaks", isOn: $svm.autoStartBreaks)
+//                    Toggle("Auto-start Focus", isOn: $svm.autoStartFocus)
+//                    Toggle("Auto-start Breaks", isOn: $svm.autoStartBreaks)
+                } footer: {
+                    Text("The number of short breaks before a long break.")
                 }
                 
                 Section("General") {
                     Toggle("Notifications", isOn: $svm.notificationsEnabled)
-                    Toggle("Vibrate on silent", isOn: $svm.vibrateOnSilent)
+//                    Toggle("Vibrate on silent", isOn: $svm.vibrateOnSilent)
                 }
                 
                 Text("Version 0.0.1")
