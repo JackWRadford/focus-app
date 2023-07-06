@@ -114,7 +114,8 @@ class CountdownViewModel: ObservableObject {
     func resume() {
         isPaused = false
         let now = Date()
-        endDate = Calendar.current.date(byAdding: .second, value: Int(durationRemaining), to: now)!.timeIntervalSince1970
+        // Round durationRemaining up before converting to Int to avoid skipping a second when resuming
+        endDate = Calendar.current.date(byAdding: .second, value: Int(durationRemaining.rounded(.up)), to: now)!.timeIntervalSince1970
     }
     
     /// Reset the countdown.
@@ -152,10 +153,9 @@ class CountdownViewModel: ObservableObject {
         let now = Date()
         let diff = endDate - now.timeIntervalSince1970
         
-        // If the countdown is done, set the timeDiff to 0.0 (00:00)
+        // If the countdown is done, go to the next stage
         if diff <= 0 {
-            isActive = false
-            timeDiff = nil
+            nextStage()
             return
         }
         
