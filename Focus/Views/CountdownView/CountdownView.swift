@@ -47,6 +47,7 @@ struct CountdownView: View {
                             .fontWeight(.semibold)
                             .padding([.bottom, .top], 8)
                             .padding([.leading, .trailing], 16)
+                            .foregroundStyle(.background)
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.roundedRectangle(radius: 30))
