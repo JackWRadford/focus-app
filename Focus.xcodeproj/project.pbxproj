@@ -28,6 +28,7 @@
 		DDAA98892A57401400921DE9 /* MainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA98882A57401400921DE9 /* MainButtonView.swift */; };
 		DDAA988B2A57410900921DE9 /* SkipButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA988A2A57410900921DE9 /* SkipButtonView.swift */; };
 		DDAA988D2A57416100921DE9 /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA988C2A57416100921DE9 /* ResetButtonView.swift */; };
+		DDAA98902A5801E200921DE9 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA988F2A5801E200921DE9 /* NotificationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		DDAA98882A57401400921DE9 /* MainButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonView.swift; sourceTree = "<group>"; };
 		DDAA988A2A57410900921DE9 /* SkipButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButtonView.swift; sourceTree = "<group>"; };
 		DDAA988C2A57416100921DE9 /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
+		DDAA988F2A5801E200921DE9 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		DDA4B6F42A4A27AB004C56FE /* Focus */ = {
 			isa = PBXGroup;
 			children = (
+				DDAA988E2A5801BB00921DE9 /* Services */,
 				DD9760F62A51FC7E0032216F /* Enums */,
 				DDA4B7352A51CDAE004C56FE /* Models */,
 				DDA4B7362A51CDD4004C56FE /* Views */,
@@ -219,6 +222,14 @@
 				DDA4B7262A4B847D004C56FE /* CountdownViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DDAA988E2A5801BB00921DE9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DDAA988F2A5801E200921DE9 /* NotificationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +371,7 @@
 				DDA4B7292A4CD18D004C56FE /* SettingsView.swift in Sources */,
 				DDA4B7332A50813C004C56FE /* UserDefaultsKey.swift in Sources */,
 				DD9760F52A51FC4F0032216F /* TimerStage.swift in Sources */,
+				DDAA98902A5801E200921DE9 /* NotificationService.swift in Sources */,
 				DDA4B7022A4A27AC004C56FE /* Focus.xcdatamodeld in Sources */,
 				DDAA988D2A57416100921DE9 /* ResetButtonView.swift in Sources */,
 				DDA4B6F62A4A27AB004C56FE /* FocusApp.swift in Sources */,

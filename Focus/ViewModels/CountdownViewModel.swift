@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 class CountdownViewModel: ObservableObject {
+    
+    let notificationService = NotificationService()
+    
     // UserDefaults timer values
     @AppStorage(UserDefaultsKey.endDate()) var endDate = Date().timeIntervalSince1970
     @AppStorage(UserDefaultsKey.durationRemaining()) var durationRemaining = 0.0
@@ -67,6 +70,9 @@ class CountdownViewModel: ObservableObject {
     }
     
     init() {
+        // Request notification permissions
+        notificationService.requestPermissions()
+        
         if (isActive) {
             if (isPaused) {
                 timeDiff = durationRemaining
@@ -99,7 +105,13 @@ class CountdownViewModel: ObservableObject {
     func start() {
         isActive = true
         let now = Date()
-        endDate = Calendar.current.date(byAdding: .minute, value: startMinutes, to: now)!.timeIntervalSince1970
+        
+        // Store Date for use when scheduling the notification
+        let endDateObj = Calendar.current.date(byAdding: .minute, value: startMinutes, to: now)!
+        endDate = endDateObj.timeIntervalSince1970
+        
+        // Schedule the notification
+        notificationService.scheduleNotification(for: endDateObj, stage: .focus)
     }
     
     /// Pause the countdown. Sets the `durationRemaining`
