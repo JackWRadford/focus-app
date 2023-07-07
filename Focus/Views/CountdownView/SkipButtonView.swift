@@ -17,7 +17,7 @@ struct SkipButtonView: View {
             Button("Skip", action: {isPresentingAlert = true})
                 .tint(.secondary)
                 .frame(maxWidth: .infinity)
-                .alert("Skip Stage", isPresented: $isPresentingAlert) {
+                .confirmationDialog("Skip Stage", isPresented: $isPresentingAlert) {
                     Button("Cancel", role: .cancel) {
                         
                     }

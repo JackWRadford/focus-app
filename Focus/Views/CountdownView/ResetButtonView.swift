@@ -17,7 +17,7 @@ struct ResetButtonView: View {
             Button("Done", action: {isPresentingAlert = true})
                 .tint(.secondary)
                 .frame(maxWidth: .infinity)
-                .alert("Reset Pomodoro", isPresented: $isPresentingAlert) {
+                .confirmationDialog("Reset Pomodoro", isPresented: $isPresentingAlert) {
                     Button("Cancel", role: .cancel) {
                         
                     }
@@ -26,7 +26,7 @@ struct ResetButtonView: View {
                     }
                 } message: {
                     VStack {
-                        Text("Your whole Pomodoro session will be reset. Focus time until now will be shown in analytics.")
+                        Text("Focus time until now will be shown in analytics. Your whole Pomodoro session will be reset. ")
                     }
                 }
         }
