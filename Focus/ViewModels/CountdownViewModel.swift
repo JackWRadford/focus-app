@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class CountdownViewModel: ObservableObject {
     
     let notificationService = NotificationService()
@@ -24,6 +25,7 @@ class CountdownViewModel: ObservableObject {
     @AppStorage(UserDefaultsKey.shortBreakDuration()) var shortBreakDuration = UDConstants.shortBreakDuration
     @AppStorage(UserDefaultsKey.longBreakDuration()) var longBreakDuration = UDConstants.longBreakDuration
     
+    /// Used to show the active coutndown value
     @Published var timeDiff: Double? = nil
     
     /// If the pomodoro session has started
@@ -120,14 +122,22 @@ class CountdownViewModel: ObservableObject {
         let now = Date()
         let diff = endDate - now.timeIntervalSince1970
         durationRemaining = diff
+        
+        // Cancel notifications
+        notificationService.cancelAll()
     }
     
     /// Resume the countdown. Sets the new `endDate` from the `durationRemaining`.
     func resume() {
         isPaused = false
         let now = Date()
+        
         // Round durationRemaining up before converting to Int to avoid skipping a second when resuming
-        endDate = Calendar.current.date(byAdding: .second, value: Int(durationRemaining.rounded(.up)), to: now)!.timeIntervalSince1970
+        let endDateObj = Calendar.current.date(byAdding: .second, value: Int(durationRemaining.rounded(.up)), to: now)!
+        endDate = endDateObj.timeIntervalSince1970
+        
+        // Schedule the notification
+        notificationService.scheduleNotification(for: endDateObj, stage: .focus)
     }
     
     /// Reset the countdown.
@@ -137,6 +147,9 @@ class CountdownViewModel: ObservableObject {
         timeDiff = nil
         focusStagesDone = 0
         stage = .focus
+        
+        // Cancel notifications
+        notificationService.cancelAll()
     }
     
     /// Go to the next (`stage`).

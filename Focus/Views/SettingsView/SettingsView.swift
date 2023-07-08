@@ -22,15 +22,24 @@ struct SettingsView: View {
                 
                 Section {
                     TextFieldSettingView(label: "Breaks interval", text: $svm.breaksInterval)
-//                    Toggle("Auto-start Focus", isOn: $svm.autoStartFocus)
-//                    Toggle("Auto-start Breaks", isOn: $svm.autoStartBreaks)
                 } footer: {
                     Text("The number of short breaks before a long break.")
                 }
                 
-                Section("General") {
+                Section("General") {                    
                     Toggle("Notifications", isOn: $svm.notificationsEnabled)
-//                    Toggle("Vibrate on silent", isOn: $svm.vibrateOnSilent)
+                        .onChange(of: svm.notificationsEnabled) { value in
+                            svm.handleNotificationsToggle(value: value)
+                        }                        
+                        .alert("Enable Notifications", isPresented: $svm.presentingNotificationsAlert) {
+                            Button("Cancel", role: .cancel) {}
+                            Button("Okay") {
+                                // Open the app's notification settings
+                                svm.openDeviceSettings()
+                            }
+                        } message: {
+                            Text("Go to settings to change your notification preferences.")
+                        }
                 }
                 
                 Text("Version 0.0.1")

@@ -11,11 +11,10 @@ import Foundation
 ///
 /// **DO NOT CHANGE VALUES**
 enum UserDefaultsKey: String {
-    case autoStartFocus, autoStartBreaks, breaksInterval,
-         notificationsEnabled, vibrateOnSilent, longBreakDuration,
+    case breaksInterval, notificationsEnabled, longBreakDuration,
          shortBreakDuration, focusDuration, endDate,
          isPaused, durationRemaining, timerStage,
-         isActive, focusStagesDone
+         isActive, focusStagesDone, notificationPermissionsRequested
     
     /// Return the rawValue when called as a function
     ///
