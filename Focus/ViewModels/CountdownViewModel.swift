@@ -113,7 +113,7 @@ class CountdownViewModel: ObservableObject {
         endDate = endDateObj.timeIntervalSince1970
         
         // Schedule the notification
-        notificationService.scheduleNotification(for: endDateObj, stage: .focus)
+        notificationService.scheduleNotification(for: endDateObj, stage: stage)
     }
     
     /// Pause the countdown. Sets the `durationRemaining`
@@ -137,7 +137,7 @@ class CountdownViewModel: ObservableObject {
         endDate = endDateObj.timeIntervalSince1970
         
         // Schedule the notification
-        notificationService.scheduleNotification(for: endDateObj, stage: .focus)
+        notificationService.scheduleNotification(for: endDateObj, stage: stage)
     }
     
     /// Reset the countdown.

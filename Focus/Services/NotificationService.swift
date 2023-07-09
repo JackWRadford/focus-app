@@ -41,10 +41,25 @@ struct NotificationService {
         // Only schedule notifications if they are enabled
         guard notificationsEnabled else { return }
         
+        var title = "Countdown done"
+        var body = "Great job!"
+        
+        switch stage {
+        case .focus:
+            title = "Focus session done"
+            body = "Great job, time for a break!"
+        case .shortBreak:
+            title = "Short break done"
+            body = "It's time to focus!"
+        case .longBreak:
+            title = "Long break done"
+            body = "You completed a Pomodoro session!"
+        }
+        
         // Configure content
         let content = UNMutableNotificationContent()
-        content.title = "Countdown done!"
-        content.body = "This is a test notification."
+        content.title = title
+        content.body = body
         
         // Get the date components from the `date`
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
