@@ -11,6 +11,11 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject var svm = SettingsViewModal()
     
+    /// Infomation property list version
+    let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+    /// Infomation property list build number
+    let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+    
     var body: some View {
         NavigationStack {
             List {
@@ -42,7 +47,7 @@ struct SettingsView: View {
                         }
                 }
                 
-                Text("Version 0.0.1")
+                Text("Version \(versionNumber) (\(buildNumber))")
                     .foregroundColor(.gray)
             }        
             .navigationTitle("Settings")
