@@ -24,7 +24,7 @@ struct CountdownView: View {
                     .frame(minHeight: 24)
                 
                 Text("\(cvm.time)")
-                    .font(.system(size: 50).monospacedDigit())
+                    .font(.system(size: 64).monospacedDigit())
                     .fontWeight(.bold)
                     .padding(.top, 20)
                     .padding(.bottom, 10)
@@ -33,6 +33,7 @@ struct CountdownView: View {
                 FocusStageDotsView()
                     .environmentObject(cvm)
                 
+                Spacer()
                 Spacer()
                                 
                 HStack(alignment: .center) {
@@ -45,7 +46,7 @@ struct CountdownView: View {
                     SkipButtonView()
                         .environmentObject(cvm)
                 }
-                .padding(.bottom)
+                .padding(.bottom, 32)
                 
             }
             .toolbar {
