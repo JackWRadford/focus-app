@@ -7,14 +7,21 @@
 
 import SwiftUI
 
+/// Get the value for the given Infomation property list `key`
+private func InfoPListValue(forKey key: String) -> String {
+    return Bundle.main.object(forInfoDictionaryKey: key) as? String ?? ""
+}
+
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject var svm = SettingsViewModal()
     
+    
+    
     /// Infomation property list version
-    let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+    let versionNumber = InfoPListValue(forKey: "CFBundleShortVersionString")
     /// Infomation property list build number
-    let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+    let buildNumber = InfoPListValue(forKey: "CFBundleVersion")
     
     var body: some View {
         NavigationStack {
@@ -31,11 +38,11 @@ struct SettingsView: View {
                     Text("The number of short breaks before a long break.")
                 }
                 
-                Section("General") {                    
+                Section("General") {
                     Toggle("Notifications", isOn: $svm.notificationsEnabled)
                         .onChange(of: svm.notificationsEnabled) { value in
                             svm.handleNotificationsToggle(value: value)
-                        }                        
+                        }
                         .alert("Enable Notifications", isPresented: $svm.presentingNotificationsAlert) {
                             Button("Cancel", role: .cancel) {}
                             Button("Okay") {
@@ -49,7 +56,7 @@ struct SettingsView: View {
                 
                 Text("Version \(versionNumber) (\(buildNumber))")
                     .foregroundColor(.gray)
-            }        
+            }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
