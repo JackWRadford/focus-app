@@ -60,6 +60,7 @@ struct NotificationService {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
+        content.sound = UNNotificationSound.default
         
         // Get the date components from the `date`
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
