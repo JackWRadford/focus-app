@@ -169,6 +169,9 @@ class CountdownViewModel: ObservableObject {
         isActive = false
         isPaused = false
         timeDiff = nil
+        
+        // Cancel notifications
+        notificationService.cancelAll()
     }
     
     /// Calculates the `timeDiff` (The TimeInterval between now and the `endDate`).
