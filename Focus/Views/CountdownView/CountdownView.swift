@@ -50,6 +50,12 @@ struct CountdownView: View {
                 
             }
             .toolbar {
+                ToolbarItem {
+                    NavigationLink(destination: AnalyticsView()) {
+                        Image(systemName: "chart.pie.fill")
+                            .foregroundColor(.primary)
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {presentingSettingsSheet.toggle()}) {
                         Image(systemName: "gearshape.fill")
