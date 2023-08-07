@@ -12,9 +12,10 @@ struct AnalyticsView: View {
     
     var body: some View {
         VStack {
+            Text(totalTime())
             List(sessions) { session in
                 HStack {
-                    VStack(alignment: .leading) {                        
+                    VStack(alignment: .leading) {
                         Text("Start  \(formatDate(date:session.startDate))")
                         Text("End    \(formatDate(date:session.endDate))")
                     }
@@ -24,6 +25,17 @@ struct AnalyticsView: View {
             }
         }
         .navigationTitle("Analytics")
+    }
+    
+    private func totalTime() -> String {
+        let sum = sessions.reduce(0) {
+            let endDate = $1.value(forKey: "endDate") as? Date
+            let startDate = $1.value(forKey: "startDate") as? Date
+            guard let startDate, let endDate else {return $0}
+            let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
+            return $0 + diff
+        }
+        return "\(timeStringFrom(diff: sum, showUnits: true))"
     }
     
     /// Returns the duration between the `startDate` and `endDate`
