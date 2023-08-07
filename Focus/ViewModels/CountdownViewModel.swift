@@ -93,9 +93,10 @@ class CountdownViewModel: ObservableObject {
         }
     }
     
-    /// Add a new focus `Session` to the CoreData store
+    /// Add a new focus `Session` to the CoreData store.
+    /// Only persist if the stage is focus and the countdown is not paused
     private func persistSession() {
-        guard let startDate else {return}
+        guard let startDate, stage == .focus, !isPaused else {return}
         let now = Date()
         let startDateObj = Date(timeIntervalSince1970: startDate)
         persistenceService.addSession(startDate: startDateObj, endDate: now)
@@ -126,6 +127,7 @@ class CountdownViewModel: ObservableObject {
     
     /// Pause the countdown. Sets the `durationRemaining`
     func pause() {
+        persistSession() // Persist before pausing
         isPaused = true
         let now = Date()
         let diff = endDate - now.timeIntervalSince1970
@@ -133,8 +135,6 @@ class CountdownViewModel: ObservableObject {
         
         // Cancel notifications
         notificationService.cancelAll()
-        
-        persistSession()
     }
     
     /// Resume the countdown. Sets the new `endDate` from the `durationRemaining`.
@@ -153,13 +153,12 @@ class CountdownViewModel: ObservableObject {
     
     /// Reset the countdown.
     func reset() {
+        persistSession() // Persist before reseting
         isActive = false
         isPaused = false
         timeDiff = nil
         focusStagesDone = 0
         stage = .focus
-        
-        persistSession()
         
         // Cancel notifications
         notificationService.cancelAll()
@@ -170,9 +169,9 @@ class CountdownViewModel: ObservableObject {
         // Update stage
         switch stage {
         case .focus:
+            persistSession()
             focusStagesDone += 1
             stage = focusStagesDone < breaksInterval ? .shortBreak : .longBreak
-            persistSession()
         case .shortBreak:
             stage = .focus
         case .longBreak:
