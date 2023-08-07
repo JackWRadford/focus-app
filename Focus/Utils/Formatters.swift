@@ -19,11 +19,12 @@ func formatDate(date: Date?) -> String {
 }
 
 /// Get time formatted string from a TimeInterval (a.k.a. Double) `diff`
-func timeStringFrom(diff: TimeInterval) -> String {
-    let date = Date(timeIntervalSince1970: diff)
-    let calendar = Calendar.current
-    let minutes = calendar.component(.minute, from: date)
-    let seconds = calendar.component(.second, from: date)
-    
-    return String(format: "%d:%02d", minutes, seconds)
+func timeStringFrom(diff: TimeInterval, showUnits: Bool) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.minute, .second]
+    if showUnits {
+        formatter.unitsStyle = .abbreviated
+    }
+
+    return formatter.string(from: diff) ?? ""
 }

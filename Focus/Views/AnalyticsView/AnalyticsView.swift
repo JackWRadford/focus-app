@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AnalyticsView: View {
-    @FetchRequest(sortDescriptors: []) var sessions: FetchedResults<Session>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "startDate", ascending: false)]) var sessions: FetchedResults<Session>
     
     var body: some View {
         VStack {
@@ -30,7 +30,7 @@ struct AnalyticsView: View {
     private func duration(from startDate: Date?, to endDate: Date?) -> String {
         guard let startDate, let endDate else {return ""}
         let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
-        return "\(timeStringFrom(diff: diff))"
+        return "\(timeStringFrom(diff: diff, showUnits: true))"
     }
 }
 
