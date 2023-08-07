@@ -22,8 +22,9 @@ struct FocusStageDotsView: View {
 }
 
 struct FocusStageDotsView_Previews: PreviewProvider {
+    
     static var previews: some View {
         FocusStageDotsView()
-            .environmentObject(CountdownViewModel())
+            .environmentObject(CountdownViewModel(moc: PersistenceController.previewMoc))
     }
 }

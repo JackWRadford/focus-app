@@ -14,7 +14,8 @@ enum UserDefaultsKey: String {
     case breaksInterval, notificationsEnabled, longBreakDuration,
          shortBreakDuration, focusDuration, endDate,
          isPaused, durationRemaining, timerStage,
-         isActive, focusStagesDone, notificationPermissionsRequested
+         isActive, focusStagesDone, notificationPermissionsRequested,
+         startDate
     
     /// Return the rawValue when called as a function
     ///

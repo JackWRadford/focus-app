@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct FocusApp: App {
-    let persistenceController = PersistenceController.shared
+    let moc = PersistenceController.shared.container.viewContext
 
     var body: some Scene {
         WindowGroup {
-            CountdownView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            CountdownView(moc: moc)
+                .environment(\.managedObjectContext, moc)
         }
     }
 }

@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CountdownView: View {
-    @StateObject private var cvm = CountdownViewModel()
+    @Environment(\.managedObjectContext) var moc
+    @ObservedObject private var cvm: CountdownViewModel
     
     @State private var presentingSettingsSheet = false
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    init(moc: NSManagedObjectContext) {
+        self.cvm = CountdownViewModel(moc: moc)
+    }
     
     var body: some View {
         NavigationView {
@@ -75,6 +81,7 @@ struct CountdownView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CountdownView(moc: PersistenceController.previewMoc)
+            .environment(\.managedObjectContext, PersistenceController.previewMoc)
     }
 }

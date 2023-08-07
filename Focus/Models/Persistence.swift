@@ -14,8 +14,11 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<5 {
+            let now = Date()
             let newSession = Session(context: viewContext)
-            newSession.startDate = Date()
+            newSession.id = UUID()
+            newSession.startDate = Calendar.current.date(byAdding: .minute, value: -90, to: now)
+            newSession.endDate = now
         }
         do {
             try viewContext.save()
@@ -27,6 +30,8 @@ struct PersistenceController {
         }
         return result
     }()
+    
+    static let previewMoc = preview.container.viewContext
 
     let container: NSPersistentCloudKitContainer
 

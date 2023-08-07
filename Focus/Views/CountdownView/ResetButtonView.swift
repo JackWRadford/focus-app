@@ -36,6 +36,6 @@ struct ResetButtonView: View {
 struct ResetButtonView_Previews: PreviewProvider {
     static var previews: some View {
         ResetButtonView()
-            .environmentObject(CountdownViewModel())
+            .environmentObject(CountdownViewModel(moc: PersistenceController.previewMoc))
     }
 }

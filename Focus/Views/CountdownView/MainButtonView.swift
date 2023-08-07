@@ -29,6 +29,6 @@ struct MainButtonView: View {
 struct MainButtonView_Previews: PreviewProvider {
     static var previews: some View {
         MainButtonView()
-            .environmentObject(CountdownViewModel())
+            .environmentObject(CountdownViewModel(moc: PersistenceController.previewMoc))
     }
 }

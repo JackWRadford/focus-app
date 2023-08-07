@@ -7,14 +7,20 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 @MainActor
 class CountdownViewModel: ObservableObject {
     
     let notificationService = NotificationService()
     
+    let persistenceService: PersistenceService
+    let moc: NSManagedObjectContext
+    
+    
     // UserDefaults timer values
     @AppStorage(UserDefaultsKey.endDate()) var endDate = Date().timeIntervalSince1970
+    @AppStorage(UserDefaultsKey.startDate()) var startDate: Double?
     @AppStorage(UserDefaultsKey.durationRemaining()) var durationRemaining = 0.0
     @AppStorage(UserDefaultsKey.isActive()) var isActive = false
     @AppStorage(UserDefaultsKey.isPaused()) var isPaused = false
@@ -71,7 +77,10 @@ class CountdownViewModel: ObservableObject {
         (isPaused ? "Resume" : "Pause"): (stage == .focus ? "Focus" : "Start")
     }
     
-    init() {
+    init(moc: NSManagedObjectContext) {
+        self.moc = moc
+        self.persistenceService = PersistenceService(moc: moc)
+        
         // Request notification permissions
         notificationService.requestPermissions()
         
@@ -84,14 +93,12 @@ class CountdownViewModel: ObservableObject {
         }
     }
     
-    /// Get `time` formatted string from a TimeInterval (a.k.a. Double) `diff`
-    private func timeStringFrom(diff: TimeInterval) -> String {
-        let date = Date(timeIntervalSince1970: diff)
-        let calendar = Calendar.current
-        let minutes = calendar.component(.minute, from: date)
-        let seconds = calendar.component(.second, from: date)
-        
-        return String(format: "%d:%02d", minutes, seconds)
+    /// Add a new focus `Session` to the CoreData store
+    private func persistSession() {
+        guard let startDate else {return}
+        let now = Date()
+        let startDateObj = Date(timeIntervalSince1970: startDate)
+        persistenceService.addSession(startDate: startDateObj, endDate: now)
     }
     
     /// Start, resume or pause the countdown depending on `isActive` and `isPaused`
@@ -111,6 +118,7 @@ class CountdownViewModel: ObservableObject {
         // Store Date for use when scheduling the notification
         let endDateObj = Calendar.current.date(byAdding: .minute, value: startMinutes, to: now)!
         endDate = endDateObj.timeIntervalSince1970
+        startDate = now.timeIntervalSince1970
         
         // Schedule the notification
         notificationService.scheduleNotification(for: endDateObj, stage: stage)
@@ -125,6 +133,8 @@ class CountdownViewModel: ObservableObject {
         
         // Cancel notifications
         notificationService.cancelAll()
+        
+        persistSession()
     }
     
     /// Resume the countdown. Sets the new `endDate` from the `durationRemaining`.
@@ -135,6 +145,7 @@ class CountdownViewModel: ObservableObject {
         // Round durationRemaining up before converting to Int to avoid skipping a second when resuming
         let endDateObj = Calendar.current.date(byAdding: .second, value: Int(durationRemaining.rounded(.up)), to: now)!
         endDate = endDateObj.timeIntervalSince1970
+        startDate = now.timeIntervalSince1970
         
         // Schedule the notification
         notificationService.scheduleNotification(for: endDateObj, stage: stage)
@@ -148,6 +159,8 @@ class CountdownViewModel: ObservableObject {
         focusStagesDone = 0
         stage = .focus
         
+        persistSession()
+        
         // Cancel notifications
         notificationService.cancelAll()
     }
@@ -159,6 +172,7 @@ class CountdownViewModel: ObservableObject {
         case .focus:
             focusStagesDone += 1
             stage = focusStagesDone < breaksInterval ? .shortBreak : .longBreak
+            persistSession()
         case .shortBreak:
             stage = .focus
         case .longBreak:

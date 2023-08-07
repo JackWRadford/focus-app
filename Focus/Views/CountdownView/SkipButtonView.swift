@@ -34,6 +34,6 @@ struct SkipButtonView: View {
 struct SkipButtonView_Previews: PreviewProvider {
     static var previews: some View {
         SkipButtonView()
-            .environmentObject(CountdownViewModel())
+            .environmentObject(CountdownViewModel(moc: PersistenceController.previewMoc))
     }
 }
