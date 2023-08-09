@@ -12,6 +12,9 @@
 		DD9900F92A80F3E30051F757 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9900F82A80F3E30051F757 /* AnalyticsView.swift */; };
 		DD9900FC2A80F7F80051F757 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9900FB2A80F7F80051F757 /* Formatters.swift */; };
 		DD9900FE2A810D510051F757 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9900FD2A810D510051F757 /* PersistenceService.swift */; };
+		DD9901002A8391730051F757 /* AnalyticsBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */; };
+		DD9901022A8392D80051F757 /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9901012A8392D80051F757 /* TimeFrame.swift */; };
+		DD9901052A83A6BF0051F757 /* Date+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9901042A83A6BF0051F757 /* Date+StartEnd.swift */; };
 		DDA4B6F62A4A27AB004C56FE /* FocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4B6F52A4A27AB004C56FE /* FocusApp.swift */; };
 		DDA4B6F82A4A27AB004C56FE /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4B6F72A4A27AB004C56FE /* CountdownView.swift */; };
 		DDA4B6FA2A4A27AC004C56FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA4B6F92A4A27AC004C56FE /* Assets.xcassets */; };
@@ -57,6 +60,9 @@
 		DD9900F82A80F3E30051F757 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		DD9900FB2A80F7F80051F757 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		DD9900FD2A810D510051F757 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsBodyView.swift; sourceTree = "<group>"; };
+		DD9901012A8392D80051F757 /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
+		DD9901042A83A6BF0051F757 /* Date+StartEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEnd.swift"; sourceTree = "<group>"; };
 		DDA4B6F22A4A27AB004C56FE /* Focus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA4B6F52A4A27AB004C56FE /* FocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusApp.swift; sourceTree = "<group>"; };
 		DDA4B6F72A4A27AB004C56FE /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 			children = (
 				DD9760F42A51FC4F0032216F /* TimerStage.swift */,
 				DDA4B7322A50813C004C56FE /* UserDefaultsKey.swift */,
+				DD9901012A8392D80051F757 /* TimeFrame.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -122,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				DD9900F82A80F3E30051F757 /* AnalyticsView.swift */,
+				DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */,
 			);
 			path = AnalyticsView;
 			sourceTree = "<group>";
@@ -132,6 +140,14 @@
 				DD9900FB2A80F7F80051F757 /* Formatters.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DD9901032A83A6780051F757 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DD9901042A83A6BF0051F757 /* Date+StartEnd.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DDA4B6E92A4A27AB004C56FE = {
@@ -157,6 +173,7 @@
 		DDA4B6F42A4A27AB004C56FE /* Focus */ = {
 			isa = PBXGroup;
 			children = (
+				DD9901032A83A6780051F757 /* Extensions */,
 				DD9900FA2A80F7CF0051F757 /* Utils */,
 				DD9760F62A51FC7E0032216F /* Enums */,
 				DDA4B7352A51CDAE004C56FE /* Models */,
@@ -388,10 +405,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDAA98872A56A8D700921DE9 /* FocusStageDotsView.swift in Sources */,
+				DD9901052A83A6BF0051F757 /* Date+StartEnd.swift in Sources */,
 				DD9760F82A5369230032216F /* Constants.swift in Sources */,
 				DDA4B6FF2A4A27AC004C56FE /* Persistence.swift in Sources */,
+				DD9901002A8391730051F757 /* AnalyticsBodyView.swift in Sources */,
 				DDAA98892A57401400921DE9 /* MainButtonView.swift in Sources */,
 				DDA4B7272A4B847D004C56FE /* CountdownViewModel.swift in Sources */,
+				DD9901022A8392D80051F757 /* TimeFrame.swift in Sources */,
 				DD9900FE2A810D510051F757 /* PersistenceService.swift in Sources */,
 				DDA4B6F82A4A27AB004C56FE /* CountdownView.swift in Sources */,
 				DDA4B7292A4CD18D004C56FE /* SettingsView.swift in Sources */,

@@ -7,15 +7,10 @@
 
 import Foundation
 
-/// Formats the given `date` in the short format
+/// Formats the given `date`
 func formatDate(date: Date?) -> String {
     guard let date else {return "n.d."}
-    
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .short
-    
-    return formatter.string(from: date)
+    return date.formatted(date: .numeric, time: .shortened)
 }
 
 /// Get time formatted string from a TimeInterval (a.k.a. Double) `diff`
