@@ -15,6 +15,7 @@
 		DD9901002A8391730051F757 /* AnalyticsBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */; };
 		DD9901022A8392D80051F757 /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9901012A8392D80051F757 /* TimeFrame.swift */; };
 		DD9901052A83A6BF0051F757 /* Date+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9901042A83A6BF0051F757 /* Date+StartEnd.swift */; };
+		DD9901072A83CF9F0051F757 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9901062A83CF9F0051F757 /* BarChart.swift */; };
 		DDA4B6F62A4A27AB004C56FE /* FocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4B6F52A4A27AB004C56FE /* FocusApp.swift */; };
 		DDA4B6F82A4A27AB004C56FE /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4B6F72A4A27AB004C56FE /* CountdownView.swift */; };
 		DDA4B6FA2A4A27AC004C56FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA4B6F92A4A27AC004C56FE /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsBodyView.swift; sourceTree = "<group>"; };
 		DD9901012A8392D80051F757 /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
 		DD9901042A83A6BF0051F757 /* Date+StartEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEnd.swift"; sourceTree = "<group>"; };
+		DD9901062A83CF9F0051F757 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		DDA4B6F22A4A27AB004C56FE /* Focus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA4B6F52A4A27AB004C56FE /* FocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusApp.swift; sourceTree = "<group>"; };
 		DDA4B6F72A4A27AB004C56FE /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				DD9900F82A80F3E30051F757 /* AnalyticsView.swift */,
 				DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */,
+				DD9901062A83CF9F0051F757 /* BarChart.swift */,
 			);
 			path = AnalyticsView;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				DD9900F92A80F3E30051F757 /* AnalyticsView.swift in Sources */,
 				DDAA98902A5801E200921DE9 /* NotificationService.swift in Sources */,
 				DDA4B7022A4A27AC004C56FE /* Focus.xcdatamodeld in Sources */,
+				DD9901072A83CF9F0051F757 /* BarChart.swift in Sources */,
 				DDAA988D2A57416100921DE9 /* ResetButtonView.swift in Sources */,
 				DD9900FC2A80F7F80051F757 /* Formatters.swift in Sources */,
 				DDA4B6F62A4A27AB004C56FE /* FocusApp.swift in Sources */,

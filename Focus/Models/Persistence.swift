@@ -13,12 +13,13 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<5 {
-            let now = Date()
+        let calendar = Calendar.current
+        for index in 0..<50 {
+            let end = calendar.date(byAdding: .hour, value: -4 * index, to: .now) ?? Date()
             let newSession = Session(context: viewContext)
             newSession.id = UUID()
-            newSession.startDate = Calendar.current.date(byAdding: .minute, value: -90, to: now)
-            newSession.endDate = now
+            newSession.startDate = calendar.date(byAdding: .minute, value: -Int.random(in: 5..<121), to: end)
+            newSession.endDate = end
         }
         do {
             try viewContext.save()
