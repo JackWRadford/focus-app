@@ -90,7 +90,11 @@ struct AnalyticsBodyView: View {
         var data: [FocusSession] = []
         // Convert
         sessions.forEach { session in
-            guard let start = session.startDate, let end = session.endDate else { return }
+            guard let start = session.startDate, var end = session.endDate else { return }
+            // Make sure that the session endDate is not after the timeFrame end
+            if (end > timeFrameDates.end) {
+                end = timeFrameDates.end
+            }
             // Split data into hour segments for the .day timeFrame
             if timeFrame != .day {
                 let date = start.startOfDay
