@@ -97,7 +97,7 @@ struct AnalyticsBodyView: View {
                 let duration = calendar.dateComponents([.minute], from: start, to: end).minute ?? 0
                 data.append(.init(date: date, duration: duration))
             } else {
-                var hourPointerComponents = calendar.dateComponents([.year, .month, .day, .hour], from: start)
+                let hourPointerComponents = calendar.dateComponents([.year, .month, .day, .hour], from: start)
                 var hourPointerDate = calendar.date(from: hourPointerComponents) ?? now
                 var fromDate = start
                 while hourPointerDate < end {
