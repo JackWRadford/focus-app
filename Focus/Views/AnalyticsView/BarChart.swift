@@ -28,7 +28,7 @@ struct BarChart: View {
             BarMark(
                 x: .value("Time", datum.date, unit: unit),
                 y: .value("Focus Minutes", datum.duration)
-            )            
+            )
         }
         .padding(.top, 8)
         .padding(.bottom, 4)
@@ -36,10 +36,10 @@ struct BarChart: View {
     }
 }
 
- private func randomTestData() -> [FocusSession] {
+private func randomTestData() -> [FocusSession] {
     var data: [FocusSession] = []
     (0..<7).forEach { index in
-        let date = Calendar.current.date(byAdding: .day, value: -1 * index, to: .now) ?? Date()        
+        let date = Calendar.current.date(byAdding: .day, value: -1 * index, to: .now) ?? Date()
         let duration = Int.random(in: 0..<121)
         data.append(.init(date: date, duration: duration))
     }
