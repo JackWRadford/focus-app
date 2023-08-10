@@ -14,7 +14,7 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         let calendar = Calendar.current
-        for index in 0..<50 {
+        for index in 0..<500 {
             let end = calendar.date(byAdding: .hour, value: -4 * index, to: .now) ?? Date()
             let newSession = Session(context: viewContext)
             newSession.id = UUID()

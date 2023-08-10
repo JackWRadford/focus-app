@@ -47,7 +47,7 @@ struct AnalyticsBodyView: View {
                     Text("Total Time")
                 }
             }
-            Section("Chart") {
+            Section(labelForTimeFrame()) {
                 BarChart(data: focusSessionData(), unit: unitForTimeFrame())
             }
             Section("Focus Data") {
@@ -66,6 +66,20 @@ struct AnalyticsBodyView: View {
                     Text("No focus data")
                 }
             }
+        }
+    }
+    
+    /// Get the chart label depending on the `timeFrame`
+    private func labelForTimeFrame() -> String {
+        switch timeFrame {
+        case .day:
+            return "Today"
+        case .week:
+            return "This week"
+        case .month:
+            return "This month"
+        case .year:
+            return "This Year"
         }
     }
     
