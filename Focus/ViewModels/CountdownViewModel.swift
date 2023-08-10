@@ -53,7 +53,7 @@ class CountdownViewModel: ObservableObject {
     /// The string showing time remaining
     var time: String {
         if let timeDiff {
-            return timeStringFrom(diff: timeDiff, showUnits: false)
+            return timeStringFrom(diff: timeDiff, showUnits: false, allowedUnits: [.minute, .second])
         } else {
             return "\(startMinutes):00"
         }

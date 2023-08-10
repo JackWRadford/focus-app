@@ -13,10 +13,12 @@ func formatDate(date: Date?) -> String {
     return date.formatted(date: .numeric, time: .shortened)
 }
 
-/// Get time formatted string from a TimeInterval (a.k.a. Double) `diff`
-func timeStringFrom(diff: TimeInterval, showUnits: Bool) -> String {
+/// Get formatted time string from a TimeInterval (a.k.a. Double) `diff`.
+/// Format depends on `allowedUnits`.
+/// Units are shown if `showUnits` is true
+func timeStringFrom(diff: TimeInterval, showUnits: Bool, allowedUnits: NSCalendar.Unit) -> String {
     let formatter = DateComponentsFormatter()
-    formatter.allowedUnits = [.minute, .second]
+    formatter.allowedUnits = allowedUnits
     if showUnits {
         formatter.unitsStyle = .abbreviated
     }

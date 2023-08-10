@@ -148,14 +148,14 @@ struct AnalyticsBodyView: View {
             let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
             return $0 + diff
         }
-        return "\(timeStringFrom(diff: sum, showUnits: true))"
+        return "\(timeStringFrom(diff: sum, showUnits: true, allowedUnits: [.hour, .minute]))"
     }
     
     /// Returns the duration between the `startDate` and `endDate`
     private func duration(from startDate: Date?, to endDate: Date?) -> String {
         guard let startDate, let endDate else {return ""}
         let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
-        return "\(timeStringFrom(diff: diff, showUnits: true))"
+        return "\(timeStringFrom(diff: diff, showUnits: true, allowedUnits: [.hour, .minute]))"
     }
 }
 
