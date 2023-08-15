@@ -71,11 +71,14 @@ struct AnalyticsBodyView: View {
     }
     
     /// Get the longest session duration of a single session
-    private func bestSession() -> String {
-        // TODO: Make sure that time past the end of the timeFrame end is not included. (Also only calculate durations once)
+    private func bestSession() -> String {        
         var bestDiff: TimeInterval = 0
         sessions.forEach { session in
-            guard let start = session.startDate, let end = session.endDate else {return}
+            guard let start = session.startDate, var end = session.endDate else {return}
+            // Make sure that time past the end of the timeFrame end is not included
+            if end > timeFrameDates.end {
+                end = timeFrameDates.end
+            }
             let diff = end.timeIntervalSince1970 - start.timeIntervalSince1970
             if diff > bestDiff {
                 bestDiff = diff
