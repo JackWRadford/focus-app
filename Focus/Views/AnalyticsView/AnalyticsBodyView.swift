@@ -41,15 +41,16 @@ struct AnalyticsBodyView: View {
     var body: some View {
         List {
             HStack {
-                VStack(alignment: .leading) {
-                    Text(totalTime())
-                        .font(.title)
-                    Text("Total Time")
-                }
+                SingleStatView(value: totalTime(), label: "Total Time")
+                Spacer()
+                SingleStatView(value: bestSession(), label: "Best Session")
             }
+            .padding(.horizontal)
+            
             Section(labelForTimeFrame()) {
                 BarChart(data: focusSessionData(), unit: unitForTimeFrame())
             }
+            
             Section("Focus Data") {
                 if sessions.count != 0 {
                     ForEach(sessions) { session in
@@ -67,6 +68,20 @@ struct AnalyticsBodyView: View {
                 }
             }
         }
+    }
+    
+    /// Get the longest session duration of a single session
+    private func bestSession() -> String {
+        // TODO: Make sure that time past the end of the timeFrame end is not included. (Also only calculate durations once)
+        var bestDiff: TimeInterval = 0
+        sessions.forEach { session in
+            guard let start = session.startDate, let end = session.endDate else {return}
+            let diff = end.timeIntervalSince1970 - start.timeIntervalSince1970
+            if diff > bestDiff {
+                bestDiff = diff
+            }
+        }
+        return "\(timeStringFrom(diff: bestDiff, showUnits: true, allowedUnits: [.hour, .minute]))"
     }
     
     /// Get the chart label depending on the `timeFrame`
@@ -93,6 +108,25 @@ struct AnalyticsBodyView: View {
         case .year:
             return .month
         }
+    }
+    
+    /// Sum the duration of all focus sessions
+    private func totalTime() -> String {
+        let sum = sessions.reduce(0) {
+            let endDate = $1.value(forKey: "endDate") as? Date
+            let startDate = $1.value(forKey: "startDate") as? Date
+            guard let startDate, let endDate else {return $0}
+            let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
+            return $0 + diff
+        }
+        return "\(timeStringFrom(diff: sum, showUnits: true, allowedUnits: [.hour, .minute]))"
+    }
+    
+    /// Returns the duration between the `startDate` and `endDate`
+    private func duration(from startDate: Date?, to endDate: Date?) -> String {
+        guard let startDate, let endDate else {return ""}
+        let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
+        return "\(timeStringFrom(diff: diff, showUnits: true, allowedUnits: [.hour, .minute]))"
     }
     
     /// Convert  `FetchedResults<Session>` data to `[FocusSession]` for the Chart.
@@ -137,25 +171,6 @@ struct AnalyticsBodyView: View {
         data.append(.init(date: timeFrameDates.start, duration: 0))
         data.append(.init(date: timeFrameDates.end, duration: 0))
         return data
-    }
-    
-    /// Sum the duration of all focus sessions
-    private func totalTime() -> String {
-        let sum = sessions.reduce(0) {
-            let endDate = $1.value(forKey: "endDate") as? Date
-            let startDate = $1.value(forKey: "startDate") as? Date
-            guard let startDate, let endDate else {return $0}
-            let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
-            return $0 + diff
-        }
-        return "\(timeStringFrom(diff: sum, showUnits: true, allowedUnits: [.hour, .minute]))"
-    }
-    
-    /// Returns the duration between the `startDate` and `endDate`
-    private func duration(from startDate: Date?, to endDate: Date?) -> String {
-        guard let startDate, let endDate else {return ""}
-        let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
-        return "\(timeStringFrom(diff: diff, showUnits: true, allowedUnits: [.hour, .minute]))"
     }
 }
 

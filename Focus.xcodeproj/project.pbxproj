@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD8069132A8597DC003982AE /* SingleStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8069122A8597DC003982AE /* SingleStatView.swift */; };
 		DD9760F52A51FC4F0032216F /* TimerStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9760F42A51FC4F0032216F /* TimerStage.swift */; };
 		DD9760F82A5369230032216F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9760F72A5369230032216F /* Constants.swift */; };
 		DD9900F92A80F3E30051F757 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9900F82A80F3E30051F757 /* AnalyticsView.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD8069122A8597DC003982AE /* SingleStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStatView.swift; sourceTree = "<group>"; };
 		DD9760F42A51FC4F0032216F /* TimerStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStage.swift; sourceTree = "<group>"; };
 		DD9760F72A5369230032216F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD9900F82A80F3E30051F757 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				DD9900F82A80F3E30051F757 /* AnalyticsView.swift */,
 				DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */,
+				DD8069122A8597DC003982AE /* SingleStatView.swift */,
 				DD9901062A83CF9F0051F757 /* BarChart.swift */,
 			);
 			path = AnalyticsView;
@@ -425,6 +428,7 @@
 				DDA4B7022A4A27AC004C56FE /* Focus.xcdatamodeld in Sources */,
 				DD9901072A83CF9F0051F757 /* BarChart.swift in Sources */,
 				DDAA988D2A57416100921DE9 /* ResetButtonView.swift in Sources */,
+				DD8069132A8597DC003982AE /* SingleStatView.swift in Sources */,
 				DD9900FC2A80F7F80051F757 /* Formatters.swift in Sources */,
 				DDA4B6F62A4A27AB004C56FE /* FocusApp.swift in Sources */,
 				DDA4B72B2A4CE0FB004C56FE /* SettingsViewModel.swift in Sources */,

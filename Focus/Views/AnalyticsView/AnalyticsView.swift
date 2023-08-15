@@ -22,10 +22,8 @@ struct AnalyticsView: View {
             
             AnalyticsBodyView(timeFrame: selectedTimeFrame)
         }
-        .navigationTitle("Analytics")
+        .navigationTitle("Analytics")        
     }
-    
-    
 }
 
 struct AnalyticsView_Previews: PreviewProvider {
