@@ -12,7 +12,7 @@ struct AnalyticsBodyView: View {
     @ObservedObject private var analyticsViewModel: AnalyticsViewModel
     
     init(timeFrame: TimeFrame, moc: NSManagedObjectContext) {        
-        self.analyticsViewModel = AnalyticsViewModel(timeFrame: timeFrame, moc: moc)                
+        self.analyticsViewModel = AnalyticsViewModel(timeFrame: timeFrame, moc: moc)
     }
     
     var body: some View {

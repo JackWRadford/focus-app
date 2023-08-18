@@ -73,7 +73,7 @@ class AnalyticsViewModel: ObservableObject {
         case .month:
             return "This month"
         case .year:
-            return "This Year"
+            return "This year"
         }
     }
     
