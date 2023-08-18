@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AnalyticsView: View {
+    @Environment(\.managedObjectContext) var moc
     @State private var selectedTimeFrame: TimeFrame = .day
     
     var body: some View {
@@ -20,7 +21,7 @@ struct AnalyticsView: View {
             .pickerStyle(.segmented)
             .padding(.horizontal)
             
-            AnalyticsBodyView(timeFrame: selectedTimeFrame)
+            AnalyticsBodyView(timeFrame: selectedTimeFrame, moc: moc)
         }
         .navigationTitle("Analytics")        
     }

@@ -16,6 +16,22 @@ struct PersistenceService {
         self.moc = moc
     }
     
+    /// Fetch the sessions where the startDate is between the timeFrameDates start and end    
+    func fetchSessions(from start: Date, to end: Date) -> [Session] {
+        var sessions: [Session] = []
+        let request = NSFetchRequest<Session>(entityName: "Session")
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Session.startDate, ascending: false)]
+        request.predicate = NSPredicate(format: "(startDate >= %@) AND (startDate <= %@)", start as CVarArg, end as CVarArg)
+        
+        do {
+            sessions = try moc.fetch(request)
+        } catch {
+            print("Error when fetching sessions: \(error.localizedDescription)")
+        }
+        
+        return sessions
+    }
+    
     /// Add a new Session with `startDate` and `endDate`.
     /// Attempt to save the managed object context
     func addSession(startDate: Date, endDate: Date) {

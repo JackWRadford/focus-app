@@ -39,6 +39,7 @@
 		DDAA98902A5801E200921DE9 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA988F2A5801E200921DE9 /* NotificationService.swift */; };
 		DDBFD1012A8CF2EA0020DC57 /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1002A8CF2EA0020DC57 /* CountdownTests.swift */; };
 		DDBFD1032A8D176B0020DC57 /* AnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1022A8D176B0020DC57 /* AnalyticsTests.swift */; };
+		DDBFD1052A8D19770020DC57 /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1042A8D19770020DC57 /* AnalyticsViewModel.swift */; };
 		DDF81DDC2A8CE9EF0052B409 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		DDAA988F2A5801E200921DE9 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		DDBFD1002A8CF2EA0020DC57 /* CountdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTests.swift; sourceTree = "<group>"; };
 		DDBFD1022A8D176B0020DC57 /* AnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTests.swift; sourceTree = "<group>"; };
+		DDBFD1042A8D19770020DC57 /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
 		DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,6 +278,7 @@
 			children = (
 				DDA4B72A2A4CE0FB004C56FE /* SettingsViewModel.swift */,
 				DDA4B7262A4B847D004C56FE /* CountdownViewModel.swift */,
+				DDBFD1042A8D19770020DC57 /* AnalyticsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				DD9901002A8391730051F757 /* AnalyticsBodyView.swift in Sources */,
 				DDAA98892A57401400921DE9 /* MainButtonView.swift in Sources */,
 				DDA4B7272A4B847D004C56FE /* CountdownViewModel.swift in Sources */,
+				DDBFD1052A8D19770020DC57 /* AnalyticsViewModel.swift in Sources */,
 				DD9901022A8392D80051F757 /* TimeFrame.swift in Sources */,
 				DD9900FE2A810D510051F757 /* PersistenceService.swift in Sources */,
 				DDA4B6F82A4A27AB004C56FE /* CountdownView.swift in Sources */,
