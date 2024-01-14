@@ -9,64 +9,29 @@ import SwiftUI
 import CoreData
 
 struct CountdownView: View {
-    @Environment(\.managedObjectContext) var moc
-    @ObservedObject private var cvm: CountdownViewModel
+    @Environment(\.managedObjectContext) private var moc
     
+    @ObservedObject var countdownVM: CountdownViewModel
     @State private var presentingSettingsSheet = false
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    init(moc: NSManagedObjectContext) {
-        self.cvm = CountdownViewModel(moc: moc)
-    }
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                
+                stage
                 Spacer()
-                
-                Text(cvm.stage != .focus ? cvm.stage.getString() : "")
-                    .font(.headline)
-                    .frame(minHeight: 24)
-                
-                Text("\(cvm.time)")
-                    .font(.system(size: 64).monospacedDigit())
-                    .fontWeight(.bold)
-                    .padding(.top, 20)
-                    .padding(.bottom, 10)
-                
-                // Focus stage indicator dots
+                time
                 FocusStageDotsView()
-                    .environmentObject(cvm)
-                
                 Spacer()
                 Spacer()
-                                
-                HStack(alignment: .center) {
-                    ResetButtonView()
-                        .environmentObject(cvm)
-                    
-                    MainButtonView()
-                        .environmentObject(cvm)
-                    
-                    SkipButtonView()
-                        .environmentObject(cvm)
-                }
-                .padding(.bottom, 32)
-                
+                actions
             }
+            .environmentObject(countdownVM)
             .toolbar {
-                ToolbarItem {
-                    NavigationLink(destination: AnalyticsView()) {
-                        Image(systemName: "chart.pie.fill")
-                            .foregroundColor(.primary)
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {presentingSettingsSheet.toggle()}) {
-                        Image(systemName: "gearshape.fill")
-                            .foregroundColor(.primary)
-                    }
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    analyticsAction
+                    settingsAction
                 }
             }
             .sheet(isPresented: $presentingSettingsSheet) {
@@ -74,14 +39,51 @@ struct CountdownView: View {
             }
         }
         .onReceive(timer) { _ in
-            cvm.updateCountdown()
+            countdownVM.updateCountdown()
+        }
+    }
+    
+    private var stage: some View {
+        Text(countdownVM.stage != .focus ? countdownVM.stage.getString() : "")
+            .font(.headline)
+            .frame(minHeight: 24)
+    }
+    
+    private var time: some View {
+        Text("\(countdownVM.time)")
+            .font(.system(size: 64).monospacedDigit())
+            .fontWeight(.bold)
+            .padding(.top, 20)
+            .padding(.bottom, 10)
+    }
+    
+    private var actions: some View {
+        HStack(alignment: .center) {
+            ResetButtonView()
+            MainButtonView()
+            SkipButtonView()
+        }
+        .padding(.bottom, 32)
+    }
+    
+    private var analyticsAction: some View {
+        NavigationLink(destination: AnalyticsView()) {
+            Image(systemName: "chart.pie.fill")
+                .foregroundColor(.primary)
+        }
+    }
+    
+    private var settingsAction: some View {
+        Button(action: {presentingSettingsSheet.toggle()}) {
+            Image(systemName: "gearshape.fill")
+                .foregroundColor(.primary)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownView(moc: PersistenceController.previewMoc)
+        CountdownView(countdownVM: CountdownViewModel(moc: PersistenceController.previewMoc))
             .environment(\.managedObjectContext, PersistenceController.previewMoc)
     }
 }

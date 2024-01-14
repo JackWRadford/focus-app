@@ -17,7 +17,7 @@ final class FormatterTests: XCTestCase {
         
         let result = formatDate(date: date)
         
-        XCTAssertEqual(result, "3/23/2000, 6:15 AM")
+        XCTAssertEqual(result, "23/03/2000, 6:15")
     }
     
     func testFormatDateWithNilDate() {

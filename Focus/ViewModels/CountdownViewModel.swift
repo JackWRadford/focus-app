@@ -17,7 +17,6 @@ class CountdownViewModel: ObservableObject {
     let persistenceService: PersistenceService
     let moc: NSManagedObjectContext
     
-    
     // UserDefaults timer values
     @AppStorage(UserDefaultsKey.endDate()) var endDate = Date().timeIntervalSince1970
     @AppStorage(UserDefaultsKey.startDate()) var startDate: Double?
@@ -33,6 +32,8 @@ class CountdownViewModel: ObservableObject {
     
     /// Used to show the active coutndown value
     @Published var timeDiff: Double? = nil
+    
+    // MARK: - Computed Properties
     
     /// If the pomodoro session has started
     var sessionStarted: Bool {
@@ -77,6 +78,8 @@ class CountdownViewModel: ObservableObject {
         (isPaused ? "Resume" : "Pause"): (stage == .focus ? "Focus" : "Start")
     }
     
+    // MARK: - Init
+    
     init(moc: NSManagedObjectContext) {
         self.moc = moc
         self.persistenceService = PersistenceService(moc: moc)
@@ -93,6 +96,8 @@ class CountdownViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Private Functions
+    
     /// Add a new focus `Session` to the CoreData store.
     /// Only persist if the stage is focus and the countdown is not paused
     private func persistSession() {
@@ -101,6 +106,8 @@ class CountdownViewModel: ObservableObject {
         let startDateObj = Date(timeIntervalSince1970: startDate)
         persistenceService.addSession(startDate: startDateObj, endDate: now)
     }
+    
+    // MARK: - Intents
     
     /// Start, resume or pause the countdown depending on `isActive` and `isPaused`
     func handleAction() {

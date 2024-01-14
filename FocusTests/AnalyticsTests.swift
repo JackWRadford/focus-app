@@ -14,10 +14,8 @@ final class AnalyticsTests: XCTestCase {
     /// Test Session data. Starts at the end of the day on 23/03/2000.
     /// Creates 10 sessions, 61 minutes in duration, where the end dates of each are 1 hours apart.
     private var sessionsTestData: [Session] {
-        let moc = PersistenceController.previewMoc
         var sessions: [Session] = []
         let calendar = Calendar.current
-        let now = Date.now
         let endDate = getDateFrom(year: 2000, month: 3, day: 23, hour: 0, minute: 0).endOfDay
         for index in 0..<10 {
             let end = calendar.date(byAdding: .hour, value: -4 * index, to: endDate)!
