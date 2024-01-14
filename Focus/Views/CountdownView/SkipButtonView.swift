@@ -9,25 +9,25 @@ import SwiftUI
 
 /// Button to skip to the next countdown stage
 struct SkipButtonView: View {
-    @EnvironmentObject var cvm: CountdownViewModel
+    @EnvironmentObject private var countdownVM: CountdownViewModel
     @State private var isPresentingAlert = false
     
     var body: some View {
-        if cvm.sessionStarted {
-            Button("Skip", action: {isPresentingAlert = true})
-                .tint(.secondary)
-                .frame(maxWidth: .infinity)
+        if countdownVM.sessionStarted {
+            button
                 .confirmationDialog("Skip Stage", isPresented: $isPresentingAlert) {
-                    Button("Cancel", role: .cancel) {
-                        
-                    }
-                    Button("Skip") {
-                        cvm.nextStage()
-                    }
+                    Button("Cancel", role: .cancel) {}
+                    Button("Skip") { countdownVM.nextStage() }
                 } message: {
                     Text("Go to the next Pomodoro stage. You cannot go back.")
                 }
         }
+    }
+    
+    private var button: some View {
+        Button("Skip", action: {isPresentingAlert = true})
+            .tint(.secondary)
+            .frame(maxWidth: .infinity)
     }
 }
 

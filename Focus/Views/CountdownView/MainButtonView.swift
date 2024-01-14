@@ -9,20 +9,40 @@ import SwiftUI
 
 /// Button for starting, pausing, and resuming the countdown
 struct MainButtonView: View {
-    @EnvironmentObject var cvm: CountdownViewModel
+    @EnvironmentObject private var countdownVM: CountdownViewModel
+    
+    // MARK: - Constants
+    
+    private let radius: CGFloat = 30
+    private let verticalPadding: CGFloat = 8
+    private let horizontalPadding: CGFloat = 16
+    
+    // MARK: - Computed Properties
+    
+    private var tintColor: Color {
+        countdownVM.isActive ? countdownVM.isPaused ? .primary : .secondary : .primary
+    }
+    
+    // MARK: - Body
     
     var body: some View {
-        Button(action: cvm.handleAction) {
-            Text(cvm.actionLabel)
-                .fontWeight(.semibold)
-                .padding([.bottom, .top], 8)
-                .padding([.leading, .trailing], 16)
-                .foregroundStyle(.background)
+        Button(action: countdownVM.handleAction) {
+            label
         }
         .buttonStyle(.borderedProminent)
-        .buttonBorderShape(.roundedRectangle(radius: 30))
-        .tint(cvm.isActive ? cvm.isPaused ? .primary : .secondary : .primary)
+        .buttonBorderShape(.roundedRectangle(radius: radius))
+        .tint(tintColor)
         .frame(maxWidth: .infinity)
+    }
+    
+    // MARK: - Sub Views
+    
+    private var label: some View {
+        Text(countdownVM.actionLabel)
+            .fontWeight(.semibold)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 16)
+            .foregroundStyle(.background)
     }
 }
 
