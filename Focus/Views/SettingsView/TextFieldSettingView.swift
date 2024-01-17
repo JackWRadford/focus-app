@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TextFieldSettingView: View {
-    
     var label: String
     @Binding var text: String
     
@@ -28,18 +27,23 @@ struct TextFieldSettingView: View {
                 .focused($focused)
                 .keyboardType(.numberPad)
                 .multilineTextAlignment(.trailing)
-                .onChange(of: focused) { newValue in
-                    // Reset editingText value or update text value with new input value
-                    if (!newValue) {
-                        if (editingText.isEmpty) {
-                            editingText = text
-                        } else {
-                            text = editingText
-                        }
-                    } else {
-                        editingText = ""
-                    }
-                }
+                .onChange(of: focused, perform: handleFocusChange)
+        }
+    }
+    
+    
+    /// Reset editingText value or update text value with new input value
+    ///
+    /// - Parameter newValue: A Bool representing the focused state.
+    private func handleFocusChange(newValue: Bool) {
+        if (!newValue) {
+            if (editingText.isEmpty) {
+                editingText = text
+            } else {
+                text = editingText
+            }
+        } else {
+            editingText = ""
         }
     }
 }
