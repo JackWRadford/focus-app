@@ -12,7 +12,6 @@ import CoreData
 
 class AnalyticsViewModel: ObservableObject {
     private let moc: NSManagedObjectContext
-    private let persistenceService: PersistenceService
     /// The time period over which to show focus data for
     private var timeFrame: TimeFrame
     
@@ -37,13 +36,12 @@ class AnalyticsViewModel: ObservableObject {
     init(timeFrame: TimeFrame, moc: NSManagedObjectContext) {
         self.moc = moc
         self.timeFrame = timeFrame
-        self.persistenceService = PersistenceService(moc: moc)
         
         fetchSessions()
     }
     
     private func fetchSessions() {
-        sessions = persistenceService.fetchSessions(from: timeFrameDates.start, to: timeFrameDates.end)
+        sessions = Session.fetchSessions(from: timeFrameDates.start, to: timeFrameDates.end, in: moc)
     }
     
     /// Get the longest session duration of a single session

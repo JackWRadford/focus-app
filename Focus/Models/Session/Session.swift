@@ -6,8 +6,17 @@
 //
 
 import Foundation
+import CoreData
 
 extension Session {
+    
+    convenience init(start: Date, end: Date, insertInto context: NSManagedObjectContext) {
+        self.init(context: context)
+        self.id = UUID()
+        self.startDate = start
+        self.endDate = end
+    }
+    
     var startDateString: String {
         userFacingString(for: startDate)
     }

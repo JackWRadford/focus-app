@@ -14,7 +14,6 @@ class CountdownViewModel: ObservableObject {
     
     let notificationService = NotificationService()
     
-    let persistenceService: PersistenceService
     let moc: NSManagedObjectContext
     
     // UserDefaults timer values
@@ -82,7 +81,6 @@ class CountdownViewModel: ObservableObject {
     
     init(moc: NSManagedObjectContext) {
         self.moc = moc
-        self.persistenceService = PersistenceService(moc: moc)
         
         // Request notification permissions
         notificationService.requestPermissions()
@@ -104,9 +102,8 @@ class CountdownViewModel: ObservableObject {
         guard let startDate, stage == .focus, !isPaused else {return}
         let now = Date()
         let startDateObj = Date(timeIntervalSince1970: startDate)
-        persistenceService.addSession(startDate: startDateObj, endDate: now)
+        Session.createWith(startDate: startDateObj, endDate: now, into: moc)
     }
-    
     
     /// Schedule a notification for the given date.
     /// With relevant title and body depending on the current timer stage.
