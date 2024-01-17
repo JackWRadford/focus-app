@@ -14,6 +14,18 @@ struct FocusSession: Identifiable {
     var id = UUID()
 }
 
+extension FocusSession {
+    static func randomTestData() -> [FocusSession] {
+        var data: [FocusSession] = []
+        (0..<7).forEach { index in
+            let date = Calendar.current.date(byAdding: .day, value: -1 * index, to: .now) ?? Date()
+            let duration = Int.random(in: 0..<121)
+            data.append(.init(date: date, duration: duration))
+        }
+        return data
+    }
+}
+
 struct BarChart: View {
     let data: [FocusSession]
     let unit: Calendar.Component
@@ -36,18 +48,8 @@ struct BarChart: View {
     }
 }
 
-private func randomTestData() -> [FocusSession] {
-    var data: [FocusSession] = []
-    (0..<7).forEach { index in
-        let date = Calendar.current.date(byAdding: .day, value: -1 * index, to: .now) ?? Date()
-        let duration = Int.random(in: 0..<121)
-        data.append(.init(date: date, duration: duration))
-    }
-    return data
-}
-
 struct BarChart_Previews: PreviewProvider {
     static var previews: some View {
-        BarChart(data: randomTestData(), unit: .day)
+        BarChart(data: FocusSession.randomTestData(), unit: .day)
     }
 }

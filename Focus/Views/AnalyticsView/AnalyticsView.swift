@@ -13,17 +13,20 @@ struct AnalyticsView: View {
     
     var body: some View {
         VStack {
-            Picker("Time Frame",selection: $selectedTimeFrame) {
-                ForEach(TimeFrame.allCases) { option in
-                    Text(option.rawValue.capitalized)
-                }
-            }
-            .pickerStyle(.segmented)
-            .padding(.horizontal)
-            
+            picker
             AnalyticsBodyView(timeFrame: selectedTimeFrame, moc: moc)
         }
         .navigationTitle("Analytics")        
+    }
+    
+    private var picker: some View {
+        Picker("Time Frame",selection: $selectedTimeFrame) {
+            ForEach(TimeFrame.allCases) { option in
+                Text(option.rawValue.capitalized)
+            }
+        }
+        .pickerStyle(.segmented)
+        .padding(.horizontal)
     }
 }
 

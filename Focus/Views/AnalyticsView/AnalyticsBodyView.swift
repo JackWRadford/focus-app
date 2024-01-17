@@ -17,32 +17,38 @@ struct AnalyticsBodyView: View {
     
     var body: some View {
         List {
-            HStack {
-                SingleStatView(value: analyticsViewModel.totalTime(), label: "Total Time")
-                Spacer()
-                SingleStatView(value: analyticsViewModel.bestSession(), label: "Best Session")
-            }
-            .padding(.horizontal)
-            
+            singleStats
             Section(analyticsViewModel.labelForTimeFrame()) {
                 BarChart(data: analyticsViewModel.focusSessionData(), unit: analyticsViewModel.unitForTimeFrame())
             }
-            
-            Section("Focus Data") {
-                if analyticsViewModel.sessions.count != 0 {
-                    ForEach(analyticsViewModel.sessions) { session in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("Start  \(session.startDateString)")
-                                Text("End    \(session.endDateString)")
-                            }
-                            Spacer()
-                            Text(analyticsViewModel.duration(from: session.startDate, to: session.endDate))
+            dataList
+        }
+    }
+    
+    private var singleStats: some View {
+        HStack {
+            SingleStatView(value: analyticsViewModel.totalTime(), label: "Total Time")
+            Spacer()
+            SingleStatView(value: analyticsViewModel.bestSession(), label: "Best Session")
+        }
+        .padding(.horizontal)
+    }
+    
+    private var dataList: some View {
+        Section("Focus Data") {
+            if analyticsViewModel.sessions.count != 0 {
+                ForEach(analyticsViewModel.sessions) { session in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Start  \(session.startDateString)")
+                            Text("End    \(session.endDateString)")
                         }
+                        Spacer()
+                        Text(analyticsViewModel.duration(from: session.startDate, to: session.endDate))
                     }
-                } else {
-                    Text("No focus data")
                 }
+            } else {
+                Text("No focus data")
             }
         }
     }
