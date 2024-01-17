@@ -7,15 +7,15 @@
 
 import Foundation
 
-/// Stage of the pomodoro timer
-///
-/// **DO NOT CHANGE VALUES**
+/// The stage of the pomodoro timer.
 enum TimerStage: String {
     case focus,
          shortBreak,
          longBreak
     
     /// Provides a user facing string
+    ///
+    /// - Returns: String
     func getString() -> String {
         switch self {
         case .focus:

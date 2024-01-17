@@ -7,7 +7,12 @@
 
 import Foundation
 
+/// The analytics time frames..
 enum TimeFrame: String, CaseIterable, Identifiable {
-    case day, week, month, year
+    case day,
+         week,
+         month,
+         year
+    
     var id: Self { self }
 }
