@@ -40,6 +40,7 @@
 		DDBFD1012A8CF2EA0020DC57 /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1002A8CF2EA0020DC57 /* CountdownTests.swift */; };
 		DDBFD1032A8D176B0020DC57 /* AnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1022A8D176B0020DC57 /* AnalyticsTests.swift */; };
 		DDBFD1052A8D19770020DC57 /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1042A8D19770020DC57 /* AnalyticsViewModel.swift */; };
+		DDE2CF932B583A13009B7A51 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF922B583A13009B7A51 /* Session.swift */; };
 		DDF81DDC2A8CE9EF0052B409 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		DDBFD1002A8CF2EA0020DC57 /* CountdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTests.swift; sourceTree = "<group>"; };
 		DDBFD1022A8D176B0020DC57 /* AnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTests.swift; sourceTree = "<group>"; };
 		DDBFD1042A8D19770020DC57 /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
+		DDE2CF922B583A13009B7A51 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,6 +240,7 @@
 			children = (
 				DDA4B6FE2A4A27AC004C56FE /* Persistence.swift */,
 				DD9760F72A5369230032216F /* Constants.swift */,
+				DDE2CF922B583A13009B7A51 /* Session.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				DD9900F92A80F3E30051F757 /* AnalyticsView.swift in Sources */,
 				DDAA98902A5801E200921DE9 /* NotificationService.swift in Sources */,
 				DDA4B7022A4A27AC004C56FE /* Focus.xcdatamodeld in Sources */,
+				DDE2CF932B583A13009B7A51 /* Session.swift in Sources */,
 				DD9901072A83CF9F0051F757 /* BarChart.swift in Sources */,
 				DDAA988D2A57416100921DE9 /* ResetButtonView.swift in Sources */,
 				DD8069132A8597DC003982AE /* SingleStatView.swift in Sources */,

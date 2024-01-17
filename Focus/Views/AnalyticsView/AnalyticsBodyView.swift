@@ -33,8 +33,8 @@ struct AnalyticsBodyView: View {
                     ForEach(analyticsViewModel.sessions) { session in
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("Start  \(formatDate(date:session.startDate))")
-                                Text("End    \(formatDate(date:session.endDate))")
+                                Text("Start  \(session.startDateString)")
+                                Text("End    \(session.endDateString)")
                             }
                             Spacer()
                             Text(analyticsViewModel.duration(from: session.startDate, to: session.endDate))
