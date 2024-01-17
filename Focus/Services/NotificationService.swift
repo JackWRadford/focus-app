@@ -12,11 +12,12 @@ import SwiftUI
 /// Provides methods to schedule and cancel local notifications
 struct NotificationService {
     
-    @AppStorage(UserDefaultsKey.notificationsEnabled()) var notificationsEnabled = true
+    @AppStorage(UserDefaultsKey.notificationsEnabled()) var notificationsEnabled = UDConstants.notificationsEnabled
     
     private let notificationCenter = UNUserNotificationCenter.current()
     
     /// Check for notification authorization
+    /// - Returns: Bool
     func hasAuthorization() async -> Bool {
         var permissionsGranted = false
         let settings = await notificationCenter.notificationSettings()
@@ -36,25 +37,14 @@ struct NotificationService {
         }
     }
     
-    /// Schedule a notification for the given `date`. The notification content depends on the `stage`.
-    func scheduleNotification(for date: Date, stage: TimerStage) {
+    /// Schedule a notification for the specific date and time.
+    /// - Parameters:
+    ///   - date: The Date for which to schedule a notification.
+    ///   - title: The title String for the notification.
+    ///   - body: The body String for the notification.
+    func scheduleNotification(for date: Date, title: String, body: String) {
         // Only schedule notifications if they are enabled
         guard notificationsEnabled else { return }
-        
-        var title = "Countdown done"
-        var body = "Great job!"
-        
-        switch stage {
-        case .focus:
-            title = "Focus session done"
-            body = "Great job, time for a break!"
-        case .shortBreak:
-            title = "Short break done"
-            body = "It's time to focus!"
-        case .longBreak:
-            title = "Long break done"
-            body = "You completed a Pomodoro session!"
-        }
         
         // Configure content
         let content = UNMutableNotificationContent()

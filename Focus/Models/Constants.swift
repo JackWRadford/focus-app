@@ -14,4 +14,5 @@ struct UDConstants {
     static let longBreakDuration = 30
     static let breaksInterval = 4
     static let focusStagesDone = 0
+    static let notificationsEnabled = true
 }

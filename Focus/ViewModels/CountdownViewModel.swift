@@ -107,6 +107,30 @@ class CountdownViewModel: ObservableObject {
         persistenceService.addSession(startDate: startDateObj, endDate: now)
     }
     
+    
+    /// Schedule a notification for the given date.
+    /// With relevant title and body depending on the current timer stage.
+    ///
+    /// - Parameter date: The Date to schedule a notificaiton for.
+    private func scheduleNotification(for date: Date) {
+        var title = "Countdown done"
+        var body = "Great job!"
+        
+        switch stage {
+        case .focus:
+            title = "Focus session done"
+            body = "Great job, time for a break!"
+        case .shortBreak:
+            title = "Short break done"
+            body = "It's time to focus!"
+        case .longBreak:
+            title = "Long break done"
+            body = "You completed a Pomodoro session!"
+        }
+        
+        notificationService.scheduleNotification(for: date, title: title, body: body)
+    }
+    
     // MARK: - Intents
     
     /// Start, resume or pause the countdown depending on `isActive` and `isPaused`
@@ -129,7 +153,7 @@ class CountdownViewModel: ObservableObject {
         startDate = now.timeIntervalSince1970
         
         // Schedule the notification
-        notificationService.scheduleNotification(for: endDateObj, stage: stage)
+        scheduleNotification(for: endDateObj)
     }
     
     /// Pause the countdown. Sets the `durationRemaining`
@@ -155,7 +179,7 @@ class CountdownViewModel: ObservableObject {
         startDate = now.timeIntervalSince1970
         
         // Schedule the notification
-        notificationService.scheduleNotification(for: endDateObj, stage: stage)
+        scheduleNotification(for: endDateObj)
     }
     
     /// Reset the countdown.
