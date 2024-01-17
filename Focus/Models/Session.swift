@@ -9,10 +9,15 @@ import Foundation
 
 extension Session {
     var startDateString: String {
-        startDate?.formatted(date: .numeric, time: .shortened) ?? "Unknown"
+        userFacingString(for: startDate)
     }
     
     var endDateString: String {
-        endDate?.formatted(date: .numeric, time: .shortened) ?? "Unknown"
+        userFacingString(for: endDate)
+    }
+    
+    // MARK: - Functions
+    private func userFacingString(for date: Date?) -> String {
+        return date?.formatted(date: .numeric, time: .shortened) ?? "Unknown"
     }
 }

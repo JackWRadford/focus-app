@@ -7,12 +7,6 @@
 
 import Foundation
 
-/// Formats the given `date`
-func formatDate(date: Date?) -> String {
-    guard let date else {return "n.d."}
-    return date.formatted(date: .numeric, time: .shortened)
-}
-
 /// Get formatted time string from a TimeInterval (a.k.a. Double) `diff`.
 /// Format depends on `allowedUnits`.
 /// Units are shown if `showUnits` is true
