@@ -41,6 +41,8 @@
 		DDBFD1052A8D19770020DC57 /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1042A8D19770020DC57 /* AnalyticsViewModel.swift */; };
 		DDE2CF932B583A13009B7A51 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF922B583A13009B7A51 /* Session.swift */; };
 		DDE2CF962B588C55009B7A51 /* Session+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF952B588C55009B7A51 /* Session+CoreData.swift */; };
+		DDE2CF982B597DAC009B7A51 /* VersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF972B597DAC009B7A51 /* VersionView.swift */; };
+		DDE2CF9A2B597E44009B7A51 /* NotificationToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF992B597E44009B7A51 /* NotificationToggleView.swift */; };
 		DDF81DDC2A8CE9EF0052B409 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,8 @@
 		DDBFD1042A8D19770020DC57 /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
 		DDE2CF922B583A13009B7A51 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DDE2CF952B588C55009B7A51 /* Session+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+CoreData.swift"; sourceTree = "<group>"; };
+		DDE2CF972B597DAC009B7A51 /* VersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionView.swift; sourceTree = "<group>"; };
+		DDE2CF992B597E44009B7A51 /* NotificationToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleView.swift; sourceTree = "<group>"; };
 		DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,6 +264,8 @@
 			children = (
 				DDA4B72E2A4D77A4004C56FE /* TextFieldSettingView.swift */,
 				DDA4B7282A4CD18D004C56FE /* SettingsView.swift */,
+				DDE2CF972B597DAC009B7A51 /* VersionView.swift */,
+				DDE2CF992B597E44009B7A51 /* NotificationToggleView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 				DDA4B7292A4CD18D004C56FE /* SettingsView.swift in Sources */,
 				DDA4B7332A50813C004C56FE /* UserDefaultsKey.swift in Sources */,
 				DD9760F52A51FC4F0032216F /* TimerStage.swift in Sources */,
+				DDE2CF982B597DAC009B7A51 /* VersionView.swift in Sources */,
 				DD9900F92A80F3E30051F757 /* AnalyticsView.swift in Sources */,
 				DDAA98902A5801E200921DE9 /* NotificationService.swift in Sources */,
 				DDA4B7022A4A27AC004C56FE /* Focus.xcdatamodeld in Sources */,
@@ -455,6 +462,7 @@
 				DD8069132A8597DC003982AE /* SingleStatView.swift in Sources */,
 				DD9900FC2A80F7F80051F757 /* Formatters.swift in Sources */,
 				DDA4B6F62A4A27AB004C56FE /* FocusApp.swift in Sources */,
+				DDE2CF9A2B597E44009B7A51 /* NotificationToggleView.swift in Sources */,
 				DDA4B72B2A4CE0FB004C56FE /* SettingsViewModel.swift in Sources */,
 				DDAA988B2A57410900921DE9 /* SkipButtonView.swift in Sources */,
 				DDA4B7312A4E054A004C56FE /* HideKeyboard.swift in Sources */,

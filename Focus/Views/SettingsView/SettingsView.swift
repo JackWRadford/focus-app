@@ -7,55 +7,17 @@
 
 import SwiftUI
 
-/// Get the value for the given Infomation property list `key`
-private func InfoPListValue(forKey key: String) -> String {
-    return Bundle.main.object(forInfoDictionaryKey: key) as? String ?? ""
-}
-
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var svm = SettingsViewModal()
-    
-    
-    
-    /// Infomation property list version
-    let versionNumber = InfoPListValue(forKey: "CFBundleShortVersionString")
-    /// Infomation property list build number
-    let buildNumber = InfoPListValue(forKey: "CFBundleVersion")
+    @StateObject private var settingsVM = SettingsViewModal()
     
     var body: some View {
         NavigationStack {
             List {
-                Section("Timer length") {
-                    TextFieldSettingView(label: "Focus Time", text: $svm.focusDuration)
-                    TextFieldSettingView(label: "Short Break", text: $svm.shortBreakDuration)
-                    TextFieldSettingView(label: "Long Break", text: $svm.longBreakDuration)
-                }
-                
-                Section {
-                    TextFieldSettingView(label: "Breaks interval", text: $svm.breaksInterval)
-                } footer: {
-                    Text("The number of short breaks before a long break.")
-                }
-                
-                Section("General") {
-                    Toggle("Notifications", isOn: $svm.notificationsEnabled)
-                        .onChange(of: svm.notificationsEnabled) { value in
-                            svm.handleNotificationsToggle(value: value)
-                        }
-                        .alert("Enable Notifications", isPresented: $svm.presentingNotificationsAlert) {
-                            Button("Cancel", role: .cancel) {}
-                            Button("Okay") {
-                                // Open the app's notification settings
-                                svm.openDeviceSettings()
-                            }
-                        } message: {
-                            Text("Go to settings to change your notification preferences.")
-                        }
-                }
-                
-                Text("Version \(versionNumber) (\(buildNumber))")
-                    .foregroundColor(.gray)
+                timerLengthSection
+                breakIntervalSection
+                generalSection
+                VersionView()
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
@@ -72,10 +34,31 @@ struct SettingsView: View {
                 }
             }
         }
-        .onDisappear {
-            // Save settings TextField changes
+        .environmentObject(settingsVM)
+    }
+    
+    private var timerLengthSection: some View {
+        Section("Timer length") {
+            TextFieldSettingView(label: "Focus Time", text: $settingsVM.focusDuration)
+            TextFieldSettingView(label: "Short Break", text: $settingsVM.shortBreakDuration)
+            TextFieldSettingView(label: "Long Break", text: $settingsVM.longBreakDuration)
         }
     }
+    
+    private var breakIntervalSection: some View {
+        Section {
+            TextFieldSettingView(label: "Breaks interval", text: $settingsVM.breaksInterval)
+        } footer: {
+            Text("The number of short breaks before a long break.")
+        }
+    }
+    
+    private var generalSection: some View {
+        Section("General") {
+            NotificationToggleView()
+        }
+    }
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {
