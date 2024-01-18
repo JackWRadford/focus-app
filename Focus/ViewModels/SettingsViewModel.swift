@@ -10,31 +10,26 @@ import SwiftUI
 
 @MainActor
 class SettingsViewModal: ObservableObject {
-    // Timer length
+    private let notificationService = NotificationService()
+    
+    // Timer lengths
     @AppStorage(UserDefaultsKey.focusDuration()) var focusDuration = "\(UDConstants.focusDuration)"
     @AppStorage(UserDefaultsKey.shortBreakDuration()) var shortBreakDuration = "\(UDConstants.shortBreakDuration)"
     @AppStorage(UserDefaultsKey.longBreakDuration()) var longBreakDuration = "\(UDConstants.longBreakDuration)"
     @AppStorage(UserDefaultsKey.breaksInterval()) var breaksInterval = "\(UDConstants.breaksInterval)"
     
-    // General
     @AppStorage(UserDefaultsKey.notificationsEnabled()) var notificationsEnabled = true
     
     @Published var presentingNotificationsAlert = false
     
-    /// If  `value` is true  schedule notifications, else  cancel all scheduled notifications
+    // MARK: - Intents
+    
+    /// If  value is true schedule notifications, else  cancel all scheduled notifications.
+    ///
+    /// - Parameter value: A Bool dictating if the notifications should be scheduled or canceled.
     func handleNotificationsToggle(value: Bool) {
-        let notificationService = NotificationService()
         if value {
-            Task {
-                if await !notificationService.hasAuthorization() {
-                    // Toggle off notifications enabled toggle
-                    notificationsEnabled = false
-                    // Alert user to update notification permissions
-                    presentingNotificationsAlert = true
-                } else {
-                    // Schedule notifications for the active countdown if there is one
-                }
-            }
+            enableNotifications()
         } else {
             notificationService.cancelAll()
         }
@@ -46,6 +41,22 @@ class SettingsViewModal: ObservableObject {
         if let url = URL(string: UIApplication.openSettingsURLString) {
             // Ask the system to open that URL.
             UIApplication.shared.open(url)
+        }
+    }
+    
+    // MARK: - Private functions
+    
+    /// If there is notification authorization, enable notifications, otherwise alert the user.
+    private func enableNotifications() {
+        Task {
+            if await notificationService.hasAuthorization() == false {
+                // Toggle off notifications enabled toggle
+                notificationsEnabled = false
+                // Alert user to update notification permissions
+                presentingNotificationsAlert = true
+            } else {
+                notificationsEnabled = true
+            }
         }
     }
 }
