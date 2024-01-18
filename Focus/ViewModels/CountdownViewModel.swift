@@ -34,6 +34,11 @@ class CountdownViewModel: ObservableObject {
     
     // MARK: - Computed Properties
     
+    /// If the countdown is currently counting down.
+    var isCounting: Bool {
+        isActive && !isPaused
+    }
+    
     /// If the pomodoro session has started
     var sessionStarted: Bool {
         isActive || focusStagesDone > 0

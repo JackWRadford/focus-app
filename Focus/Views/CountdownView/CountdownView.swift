@@ -16,6 +16,10 @@ struct CountdownView: View {
     
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    private var actionColor: Color {
+        countdownVM.isCounting ? .secondary : .primary
+    }
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -69,15 +73,17 @@ struct CountdownView: View {
     private var analyticsAction: some View {
         NavigationLink(destination: AnalyticsView()) {
             Image(systemName: "chart.pie.fill")
-                .foregroundColor(.primary)
+                .foregroundColor(actionColor)
         }
+        .disabled(countdownVM.isCounting)
     }
     
     private var settingsAction: some View {
         Button(action: {presentingSettingsSheet.toggle()}) {
             Image(systemName: "gearshape.fill")
-                .foregroundColor(.primary)
+                .foregroundColor(actionColor)
         }
+        .disabled(countdownVM.isCounting)
     }
 }
 
