@@ -52,7 +52,8 @@ final class AnalyticsTests: XCTestCase {
     
     func testBestSession() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .year, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .year
         avm.sessions = sessionsTestData
         
         let result = avm.bestSession()
@@ -62,7 +63,8 @@ final class AnalyticsTests: XCTestCase {
     
     func testTotalTime() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .year, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .year
         avm.sessions = sessionsTestData
         
         let result = avm.totalTime()
@@ -72,7 +74,8 @@ final class AnalyticsTests: XCTestCase {
     
     func testUnitForTimeFrameDay() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .day, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .day
         
         let result = avm.labelForTimeFrame()
         
@@ -80,7 +83,8 @@ final class AnalyticsTests: XCTestCase {
     }
     func testUnitForTimeFrameWeek() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .week, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .week
         
         let result = avm.labelForTimeFrame()
         
@@ -88,7 +92,8 @@ final class AnalyticsTests: XCTestCase {
     }
     func testUnitForTimeFrameMonth() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .month, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .month
         
         let result = avm.labelForTimeFrame()
         
@@ -96,7 +101,8 @@ final class AnalyticsTests: XCTestCase {
     }
     func testUnitForTimeFrameYear() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .year, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .year
         
         let result = avm.labelForTimeFrame()
         
@@ -105,7 +111,8 @@ final class AnalyticsTests: XCTestCase {
     
     func testDuration() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .year, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .year
         let calendar = Calendar.current
         let now = Date.now
         let from = calendar.date(byAdding: .minute, value: -175, to: now)!
@@ -116,7 +123,8 @@ final class AnalyticsTests: XCTestCase {
     }
     func testNegativeDuration() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .year, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .year
         let calendar = Calendar.current
         let now = Date.now
         let from = calendar.date(byAdding: .minute, value: 175, to: now)!
@@ -127,7 +135,8 @@ final class AnalyticsTests: XCTestCase {
     }
     func testZeroDuration() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .year, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .year
         let now = Date.now
         
         let result = avm.duration(from: now, to: now)
@@ -137,7 +146,8 @@ final class AnalyticsTests: XCTestCase {
     
     func testFocusSessionDataForDayTimeFrame() {
         let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(timeFrame: .day, moc: moc)
+        let avm = AnalyticsViewModel(moc: moc)
+        avm.timeFrame = .day
         avm.sessions = [
             createSession(
                 from: getDateFrom(year: 2000, month: 3, day: 23, hour: 10, minute: 0),
