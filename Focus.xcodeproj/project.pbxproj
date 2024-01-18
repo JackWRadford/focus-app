@@ -12,7 +12,6 @@
 		DD9760F82A5369230032216F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9760F72A5369230032216F /* Constants.swift */; };
 		DD9900F92A80F3E30051F757 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9900F82A80F3E30051F757 /* AnalyticsView.swift */; };
 		DD9900FC2A80F7F80051F757 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9900FB2A80F7F80051F757 /* Formatters.swift */; };
-		DD9901002A8391730051F757 /* AnalyticsBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */; };
 		DD9901022A8392D80051F757 /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9901012A8392D80051F757 /* TimeFrame.swift */; };
 		DD9901052A83A6BF0051F757 /* Date+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9901042A83A6BF0051F757 /* Date+StartEnd.swift */; };
 		DD9901072A83CF9F0051F757 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9901062A83CF9F0051F757 /* BarChart.swift */; };
@@ -43,6 +42,10 @@
 		DDE2CF962B588C55009B7A51 /* Session+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF952B588C55009B7A51 /* Session+CoreData.swift */; };
 		DDE2CF982B597DAC009B7A51 /* VersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF972B597DAC009B7A51 /* VersionView.swift */; };
 		DDE2CF9A2B597E44009B7A51 /* NotificationToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF992B597E44009B7A51 /* NotificationToggleView.swift */; };
+		DDE2CF9E2B59C646009B7A51 /* TimeFramePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF9D2B59C646009B7A51 /* TimeFramePickerView.swift */; };
+		DDE2CFA02B59C73F009B7A51 /* SingleStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF9F2B59C73F009B7A51 /* SingleStatsView.swift */; };
+		DDE2CFA22B59C790009B7A51 /* SessionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CFA12B59C790009B7A51 /* SessionsListView.swift */; };
+		DDE2CFA42B59C9C3009B7A51 /* AnalyticsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CFA32B59C9C3009B7A51 /* AnalyticsButtonView.swift */; };
 		DDF81DDC2A8CE9EF0052B409 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +72,6 @@
 		DD9760F72A5369230032216F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DD9900F82A80F3E30051F757 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		DD9900FB2A80F7F80051F757 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
-		DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsBodyView.swift; sourceTree = "<group>"; };
 		DD9901012A8392D80051F757 /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
 		DD9901042A83A6BF0051F757 /* Date+StartEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartEnd.swift"; sourceTree = "<group>"; };
 		DD9901062A83CF9F0051F757 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
@@ -105,6 +107,10 @@
 		DDE2CF952B588C55009B7A51 /* Session+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+CoreData.swift"; sourceTree = "<group>"; };
 		DDE2CF972B597DAC009B7A51 /* VersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionView.swift; sourceTree = "<group>"; };
 		DDE2CF992B597E44009B7A51 /* NotificationToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleView.swift; sourceTree = "<group>"; };
+		DDE2CF9D2B59C646009B7A51 /* TimeFramePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFramePickerView.swift; sourceTree = "<group>"; };
+		DDE2CF9F2B59C73F009B7A51 /* SingleStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStatsView.swift; sourceTree = "<group>"; };
+		DDE2CFA12B59C790009B7A51 /* SessionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsListView.swift; sourceTree = "<group>"; };
+		DDE2CFA32B59C9C3009B7A51 /* AnalyticsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsButtonView.swift; sourceTree = "<group>"; };
 		DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,9 +153,11 @@
 			isa = PBXGroup;
 			children = (
 				DD9900F82A80F3E30051F757 /* AnalyticsView.swift */,
-				DD9900FF2A8391730051F757 /* AnalyticsBodyView.swift */,
+				DDE2CFA12B59C790009B7A51 /* SessionsListView.swift */,
+				DDE2CF9F2B59C73F009B7A51 /* SingleStatsView.swift */,
 				DD8069122A8597DC003982AE /* SingleStatView.swift */,
 				DD9901062A83CF9F0051F757 /* BarChart.swift */,
+				DDE2CF9D2B59C646009B7A51 /* TimeFramePickerView.swift */,
 			);
 			path = AnalyticsView;
 			sourceTree = "<group>";
@@ -278,6 +286,7 @@
 				DDAA988A2A57410900921DE9 /* SkipButtonView.swift */,
 				DDAA98882A57401400921DE9 /* MainButtonView.swift */,
 				DDAA98862A56A8D700921DE9 /* FocusStageDotsView.swift */,
+				DDE2CFA32B59C9C3009B7A51 /* AnalyticsButtonView.swift */,
 			);
 			path = CountdownView;
 			sourceTree = "<group>";
@@ -443,13 +452,15 @@
 				DD9901052A83A6BF0051F757 /* Date+StartEnd.swift in Sources */,
 				DD9760F82A5369230032216F /* Constants.swift in Sources */,
 				DDA4B6FF2A4A27AC004C56FE /* Persistence.swift in Sources */,
-				DD9901002A8391730051F757 /* AnalyticsBodyView.swift in Sources */,
 				DDAA98892A57401400921DE9 /* MainButtonView.swift in Sources */,
 				DDA4B7272A4B847D004C56FE /* CountdownViewModel.swift in Sources */,
 				DDBFD1052A8D19770020DC57 /* AnalyticsViewModel.swift in Sources */,
 				DD9901022A8392D80051F757 /* TimeFrame.swift in Sources */,
 				DDA4B6F82A4A27AB004C56FE /* CountdownView.swift in Sources */,
 				DDA4B7292A4CD18D004C56FE /* SettingsView.swift in Sources */,
+				DDE2CF9E2B59C646009B7A51 /* TimeFramePickerView.swift in Sources */,
+				DDE2CFA02B59C73F009B7A51 /* SingleStatsView.swift in Sources */,
+				DDE2CFA42B59C9C3009B7A51 /* AnalyticsButtonView.swift in Sources */,
 				DDA4B7332A50813C004C56FE /* UserDefaultsKey.swift in Sources */,
 				DD9760F52A51FC4F0032216F /* TimerStage.swift in Sources */,
 				DDE2CF982B597DAC009B7A51 /* VersionView.swift in Sources */,
@@ -468,6 +479,7 @@
 				DDA4B7312A4E054A004C56FE /* HideKeyboard.swift in Sources */,
 				DDA4B72F2A4D77A4004C56FE /* TextFieldSettingView.swift in Sources */,
 				DDE2CF962B588C55009B7A51 /* Session+CoreData.swift in Sources */,
+				DDE2CFA22B59C790009B7A51 /* SessionsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

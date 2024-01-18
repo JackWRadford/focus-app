@@ -6,34 +6,32 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct AnalyticsView: View {
-    @Environment(\.managedObjectContext) var moc
-    @State private var selectedTimeFrame: TimeFrame = .day
+    @ObservedObject var analyticsVM: AnalyticsViewModel
     
     var body: some View {
         VStack {
-            picker
-            AnalyticsBodyView(timeFrame: selectedTimeFrame, moc: moc)
-        }
-        .navigationTitle("Analytics")        
-    }
-    
-    private var picker: some View {
-        Picker("Time Frame",selection: $selectedTimeFrame) {
-            ForEach(TimeFrame.allCases) { option in
-                Text(option.rawValue.capitalized)
+            TimeFramePickerView()
+            List {
+                SingleStatsView()
+                Section(analyticsVM.labelForTimeFrame()) {
+                    BarChart(data: analyticsVM.focusSessionData(), unit: analyticsVM.unitForTimeFrame())
+                }
+                SessionsListView()
             }
         }
-        .pickerStyle(.segmented)
-        .padding(.horizontal)
+        .navigationTitle("Analytics")
+        .environmentObject(analyticsVM)
     }
 }
 
 struct AnalyticsView_Previews: PreviewProvider {
+    static let previewContext = PersistenceController.previewMoc
     static var previews: some View {
-        AnalyticsView()
-            .environment(\.managedObjectContext, PersistenceController.previewMoc)
-            .environmentObject(CountdownViewModel(moc: PersistenceController.previewMoc))
+        AnalyticsView(analyticsVM: AnalyticsViewModel(moc: previewContext))
+            .environment(\.managedObjectContext, previewContext)
+            .environmentObject(CountdownViewModel(moc: previewContext))
     }
 }

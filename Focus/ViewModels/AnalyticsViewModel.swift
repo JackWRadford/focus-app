@@ -9,13 +9,21 @@ import Foundation
 import SwiftUI
 import CoreData
 
-
 class AnalyticsViewModel: ObservableObject {
     private let moc: NSManagedObjectContext
-    /// The time period over which to show focus data for
-    private var timeFrame: TimeFrame
     
-    @Published var sessions: [Session] = []    
+    /// The time period over which to show focus data for.
+    @Published var timeFrame: TimeFrame = .day
+    
+    @Published var sessions: [Session] = []
+    
+    init(moc: NSManagedObjectContext) {
+        self.moc = moc
+        
+        fetchSessions()
+    }
+    
+    // MARK: - Computed Properties
     
     /// The start and end dates of the `timeFrame`. (e.g. start of week and end of week)
     var timeFrameDates: (start: Date, end: Date) {
@@ -33,16 +41,7 @@ class AnalyticsViewModel: ObservableObject {
         }
     }
     
-    init(timeFrame: TimeFrame, moc: NSManagedObjectContext) {
-        self.moc = moc
-        self.timeFrame = timeFrame
-        
-        fetchSessions()
-    }
-    
-    private func fetchSessions() {
-        sessions = Session.fetchSessions(from: timeFrameDates.start, to: timeFrameDates.end, in: moc)
-    }
+    // MARK: - Intents
     
     /// Get the longest session duration of a single session
     func bestSession() -> String {
@@ -148,6 +147,12 @@ class AnalyticsViewModel: ObservableObject {
         data.append(.init(date: timeFrameDates.start, duration: 0))
         data.append(.init(date: timeFrameDates.end, duration: 0))
         return data
+    }
+    
+    // MARK: - Private Functions
+    
+    private func fetchSessions() {
+        sessions = Session.fetchSessions(from: timeFrameDates.start, to: timeFrameDates.end, in: moc)
     }
 }
 

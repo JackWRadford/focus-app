@@ -34,7 +34,7 @@ struct CountdownView: View {
             .environmentObject(countdownVM)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    analyticsAction
+                    AnalyticsButtonView(context: moc)
                     settingsAction
                 }
             }
@@ -45,6 +45,7 @@ struct CountdownView: View {
         .onReceive(timer) { _ in
             countdownVM.updateCountdown()
         }
+        .environmentObject(countdownVM)
     }
     
     private var stage: some View {
@@ -68,14 +69,6 @@ struct CountdownView: View {
             SkipButtonView()
         }
         .padding(.bottom, 32)
-    }
-    
-    private var analyticsAction: some View {
-        NavigationLink(destination: AnalyticsView()) {
-            Image(systemName: "chart.pie.fill")
-                .foregroundColor(actionColor)
-        }
-        .disabled(countdownVM.isCounting)
     }
     
     private var settingsAction: some View {
