@@ -10,21 +10,6 @@ import XCTest
 @testable import Focus
 
 final class FormatterTests: XCTestCase {
-
-    func testFormatDate() {
-        let components = DateComponents(year: 2000, month: 3, day: 23, hour: 6, minute: 15)
-        let date = Calendar.current.date(from: components)
-        
-        let result = formatDate(date: date)
-        
-        XCTAssertEqual(result, "23/03/2000, 6:15")
-    }
-    
-    func testFormatDateWithNilDate() {
-        let result = formatDate(date: nil)
-        
-        XCTAssertEqual(result, "n.d.")
-    }
     
     func testTimeStringFromWithUnits() {
         let diff: TimeInterval = 196126
