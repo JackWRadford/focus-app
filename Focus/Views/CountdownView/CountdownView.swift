@@ -10,15 +10,9 @@ import CoreData
 
 struct CountdownView: View {
     @Environment(\.managedObjectContext) private var moc
-    
     @ObservedObject var countdownVM: CountdownViewModel
-    @State private var presentingSettingsSheet = false
     
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
-    private var actionColor: Color {
-        countdownVM.isCounting ? .secondary : .primary
-    }
     
     var body: some View {
         NavigationView {
@@ -35,11 +29,8 @@ struct CountdownView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     AnalyticsButtonView(context: moc)
-                    settingsAction
+                    SettingsButtonView()
                 }
-            }
-            .sheet(isPresented: $presentingSettingsSheet) {
-                SettingsView()
             }
         }
         .onReceive(timer) { _ in
@@ -69,14 +60,6 @@ struct CountdownView: View {
             SkipButtonView()
         }
         .padding(.bottom, 32)
-    }
-    
-    private var settingsAction: some View {
-        Button(action: {presentingSettingsSheet.toggle()}) {
-            Image(systemName: "gearshape.fill")
-                .foregroundColor(actionColor)
-        }
-        .disabled(countdownVM.isCounting)
     }
 }
 

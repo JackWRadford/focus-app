@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var settingsVM = SettingsViewModal()
+    @ObservedObject var settingsVM: SettingsViewModal
     
     var body: some View {
         NavigationStack {
@@ -63,6 +63,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(settingsVM: SettingsViewModal())
     }
 }

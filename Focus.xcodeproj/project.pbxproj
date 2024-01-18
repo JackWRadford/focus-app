@@ -46,6 +46,7 @@
 		DDE2CFA02B59C73F009B7A51 /* SingleStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CF9F2B59C73F009B7A51 /* SingleStatsView.swift */; };
 		DDE2CFA22B59C790009B7A51 /* SessionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CFA12B59C790009B7A51 /* SessionsListView.swift */; };
 		DDE2CFA42B59C9C3009B7A51 /* AnalyticsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CFA32B59C9C3009B7A51 /* AnalyticsButtonView.swift */; };
+		DDE2CFA62B59D09B009B7A51 /* SettingsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CFA52B59D09B009B7A51 /* SettingsButtonView.swift */; };
 		DDF81DDC2A8CE9EF0052B409 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		DDE2CF9F2B59C73F009B7A51 /* SingleStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStatsView.swift; sourceTree = "<group>"; };
 		DDE2CFA12B59C790009B7A51 /* SessionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsListView.swift; sourceTree = "<group>"; };
 		DDE2CFA32B59C9C3009B7A51 /* AnalyticsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsButtonView.swift; sourceTree = "<group>"; };
+		DDE2CFA52B59D09B009B7A51 /* SettingsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonView.swift; sourceTree = "<group>"; };
 		DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -287,6 +289,7 @@
 				DDAA98882A57401400921DE9 /* MainButtonView.swift */,
 				DDAA98862A56A8D700921DE9 /* FocusStageDotsView.swift */,
 				DDE2CFA32B59C9C3009B7A51 /* AnalyticsButtonView.swift */,
+				DDE2CFA52B59D09B009B7A51 /* SettingsButtonView.swift */,
 			);
 			path = CountdownView;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				DDE2CF9E2B59C646009B7A51 /* TimeFramePickerView.swift in Sources */,
 				DDE2CFA02B59C73F009B7A51 /* SingleStatsView.swift in Sources */,
 				DDE2CFA42B59C9C3009B7A51 /* AnalyticsButtonView.swift in Sources */,
+				DDE2CFA62B59D09B009B7A51 /* SettingsButtonView.swift in Sources */,
 				DDA4B7332A50813C004C56FE /* UserDefaultsKey.swift in Sources */,
 				DD9760F52A51FC4F0032216F /* TimerStage.swift in Sources */,
 				DDE2CF982B597DAC009B7A51 /* VersionView.swift in Sources */,
