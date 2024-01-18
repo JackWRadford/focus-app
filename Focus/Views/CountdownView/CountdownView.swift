@@ -17,8 +17,8 @@ struct CountdownView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                stage
                 Spacer()
+                stage
                 time
                 FocusStageDotsView()
                 Spacer()
