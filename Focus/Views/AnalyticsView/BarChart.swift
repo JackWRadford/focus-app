@@ -36,15 +36,19 @@ struct BarChart: View {
     }
     
     var body: some View {
-        Chart(data) { datum in
-            BarMark(
-                x: .value("Time", datum.date, unit: unit),
-                y: .value("Focus Minutes", datum.duration)
-            )
+        VStack(alignment: .leading) {
+            Text("Focus Time").bold()
+            Chart(data) { datum in
+                BarMark(
+                    x: .value("Time", datum.date, unit: unit),
+                    y: .value("Focus Minutes", datum.duration)
+                )
+                .foregroundStyle(Color.primary)
+            }
+            .padding(.top, 8)
+            .padding(.bottom, 4)
+            .frame(height: 220)
         }
-        .padding(.top, 8)
-        .padding(.bottom, 4)
-        .frame(height: 220)
     }
 }
 

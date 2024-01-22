@@ -47,6 +47,7 @@
 		DDE2CFA22B59C790009B7A51 /* SessionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CFA12B59C790009B7A51 /* SessionsListView.swift */; };
 		DDE2CFA42B59C9C3009B7A51 /* AnalyticsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CFA32B59C9C3009B7A51 /* AnalyticsButtonView.swift */; };
 		DDE2CFA62B59D09B009B7A51 /* SettingsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CFA52B59D09B009B7A51 /* SettingsButtonView.swift */; };
+		DDE2CFA82B5A0EB4009B7A51 /* EdgeInsets+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE2CFA72B5A0EB4009B7A51 /* EdgeInsets+Extension.swift */; };
 		DDF81DDC2A8CE9EF0052B409 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		DDE2CFA12B59C790009B7A51 /* SessionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsListView.swift; sourceTree = "<group>"; };
 		DDE2CFA32B59C9C3009B7A51 /* AnalyticsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsButtonView.swift; sourceTree = "<group>"; };
 		DDE2CFA52B59D09B009B7A51 /* SettingsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonView.swift; sourceTree = "<group>"; };
+		DDE2CFA72B5A0EB4009B7A51 /* EdgeInsets+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgeInsets+Extension.swift"; sourceTree = "<group>"; };
 		DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				DD9901042A83A6BF0051F757 /* Date+StartEnd.swift */,
+				DDE2CFA72B5A0EB4009B7A51 /* EdgeInsets+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				DDA4B7272A4B847D004C56FE /* CountdownViewModel.swift in Sources */,
 				DDBFD1052A8D19770020DC57 /* AnalyticsViewModel.swift in Sources */,
 				DD9901022A8392D80051F757 /* TimeFrame.swift in Sources */,
+				DDE2CFA82B5A0EB4009B7A51 /* EdgeInsets+Extension.swift in Sources */,
 				DDA4B6F82A4A27AB004C56FE /* CountdownView.swift in Sources */,
 				DDA4B7292A4CD18D004C56FE /* SettingsView.swift in Sources */,
 				DDE2CF9E2B59C646009B7A51 /* TimeFramePickerView.swift in Sources */,

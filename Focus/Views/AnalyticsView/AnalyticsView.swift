@@ -10,13 +10,13 @@ import CoreData
 
 struct AnalyticsView: View {
     @ObservedObject var analyticsVM: AnalyticsViewModel
-    
+
     var body: some View {
         VStack {
             TimeFramePickerView()
             List {
                 SingleStatsView()
-                Section(analyticsVM.labelForTimeFrame()) {
+                Section {
                     BarChart(data: analyticsVM.focusSessionData(), unit: analyticsVM.unitForTimeFrame())
                 }
                 SessionsListView()

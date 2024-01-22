@@ -12,15 +12,17 @@ struct SingleStatsView: View {
     
     var body: some View {
         HStack {
-            SingleStatView(value: analyticsViewModel.totalTime(), label: "Total Time")
-            Spacer()
-            SingleStatView(value: analyticsViewModel.bestSession(), label: "Best Session")
+            SingleStatView("Total Time", analyticsViewModel.totalTime())
+            SingleStatView( "Best Session", analyticsViewModel.bestSession())
         }
-        .padding(.horizontal)
+        .listRowBackground(Color.clear)
+        .listRowInsets(.allZero)
     }
 }
 
 #Preview {
-    SingleStatsView()
-        .environmentObject(AnalyticsViewModel(moc: PersistenceController.previewMoc))
+    List {
+        SingleStatsView()
+    }
+    .environmentObject(AnalyticsViewModel(moc: PersistenceController.previewMoc))
 }
