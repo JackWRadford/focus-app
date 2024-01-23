@@ -9,33 +9,40 @@ import SwiftUI
 import Charts
 
 struct BarChart: View {
-    let data: [FocusSession]
-    let unit: Calendar.Component
+    @EnvironmentObject private var analyticsVM: AnalyticsViewModel
     
-    init(data: [FocusSession], unit: Calendar.Component) {
-        self.data = data
-        self.unit = unit
+    private var data: [FocusSession] {
+        analyticsVM.focusSessionData()
+    }
+    
+    private var unit: Calendar.Component {
+        analyticsVM.unitForTimeFrame()
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Focus Time").bold()
-            Chart(data) { datum in
-                BarMark(
-                    x: .value("Time", datum.date, unit: unit),
-                    y: .value("Focus Minutes", datum.duration)
-                )
-                .foregroundStyle(Color.primary)
+        Section {
+            VStack(alignment: .leading) {
+                Text("Focus Time").bold()
+                Chart(data) { datum in
+                    BarMark(
+                        x: .value("Time", datum.date, unit: unit),
+                        y: .value("Focus Minutes", datum.duration)
+                    )
+                    .foregroundStyle(Color.primary)
+                }
+                .padding(.top, 8)
+                .padding(.bottom, 4)
+                .frame(height: 220)
             }
-            .padding(.top, 8)
-            .padding(.bottom, 4)
-            .frame(height: 220)
         }
     }
 }
 
 struct BarChart_Previews: PreviewProvider {
     static var previews: some View {
-        BarChart(data: FocusSession.randomTestData(), unit: .day)
+        List {
+            BarChart()
+                .environmentObject(AnalyticsViewModel(moc: PersistenceController.previewMoc))
+        }
     }
 }

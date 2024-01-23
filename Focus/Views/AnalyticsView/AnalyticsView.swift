@@ -16,9 +16,7 @@ struct AnalyticsView: View {
             TimeFramePickerView()
             List {
                 SingleStatsView()
-                Section {
-                    BarChart(data: analyticsVM.focusSessionData(), unit: analyticsVM.unitForTimeFrame())
-                }
+                BarChart()
                 SessionsListView()
             }
         }
