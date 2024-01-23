@@ -10,27 +10,18 @@ import CoreData
 
 extension Session {
     
-    /// Fetch the sessions where the startDate is between the timeFrameDates start and end
+    /// FetchRequest for the sessions where the startDate is between the timeFrameDates start and end
     ///
     /// - Parameters:
     ///   - start: The start Date of the time window to fetch sessions for.
     ///   - end: The end Date of the time window to fetch sessions for.
-    ///   - context: The NSManagedObjectContext to fetch in.
     ///
-    /// - Returns: An Array of Sessions.
-    static func fetchSessions(from start: Date, to end: Date, in context: NSManagedObjectContext) -> [Session] {
-        var sessions: [Session] = []
+    /// - Returns: The NSFetchRequest.
+    static func fetchSessions(from start: Date, to end: Date) -> NSFetchRequest<Session> {
         let request = Session.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Session.startDate, ascending: false)]
         request.predicate = NSPredicate(format: "(startDate >= %@) AND (startDate <= %@)", start as CVarArg, end as CVarArg)
-        
-        do {
-            sessions = try context.fetch(request)
-        } catch {
-            print("Error when fetching sessions: \(error.localizedDescription)")
-        }
-        
-        return sessions
+        return request
     }
     
     /// Add a new Session with the given startDate and endDate.

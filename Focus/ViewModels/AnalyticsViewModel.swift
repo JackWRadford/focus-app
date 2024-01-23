@@ -19,8 +19,6 @@ class AnalyticsViewModel: ObservableObject {
     
     init(moc: NSManagedObjectContext) {
         self.moc = moc
-        
-        fetchSessions()
     }
     
     // MARK: - Computed Properties
@@ -133,12 +131,6 @@ class AnalyticsViewModel: ObservableObject {
         data.append(.init(date: timeFrameDates.start, duration: 0))
         data.append(.init(date: timeFrameDates.end, duration: 0))
         return data
-    }
-    
-    // MARK: - Private Functions
-    
-    private func fetchSessions() {
-        sessions = Session.fetchSessions(from: timeFrameDates.start, to: timeFrameDates.end, in: moc)
     }
 }
 
