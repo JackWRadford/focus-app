@@ -60,20 +60,6 @@ class AnalyticsViewModel: ObservableObject {
         return "\(timeStringFrom(diff: bestDiff, showUnits: true, allowedUnits: [.hour, .minute]))"
     }
     
-    /// Get the chart label depending on the `timeFrame`
-    func labelForTimeFrame() -> String {
-        switch timeFrame {
-        case .day:
-            return "Today"
-        case .week:
-            return "This week"
-        case .month:
-            return "This month"
-        case .year:
-            return "This year"
-        }
-    }
-    
     /// Get the Chart's date unit depending on the `timeFrame`
     func unitForTimeFrame() -> Calendar.Component {
         switch timeFrame {

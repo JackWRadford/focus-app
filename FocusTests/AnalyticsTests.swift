@@ -77,36 +77,36 @@ final class AnalyticsTests: XCTestCase {
         let avm = AnalyticsViewModel(moc: moc)
         avm.timeFrame = .day
         
-        let result = avm.labelForTimeFrame()
+        let result = avm.unitForTimeFrame()
         
-        XCTAssertEqual(result, "Today")
+        XCTAssertEqual(result, .hour)
     }
     func testUnitForTimeFrameWeek() {
         let moc = PersistenceController.previewMoc
         let avm = AnalyticsViewModel(moc: moc)
         avm.timeFrame = .week
         
-        let result = avm.labelForTimeFrame()
+        let result = avm.unitForTimeFrame()
         
-        XCTAssertEqual(result, "This week")
+        XCTAssertEqual(result, .day)
     }
     func testUnitForTimeFrameMonth() {
         let moc = PersistenceController.previewMoc
         let avm = AnalyticsViewModel(moc: moc)
         avm.timeFrame = .month
         
-        let result = avm.labelForTimeFrame()
+        let result = avm.unitForTimeFrame()
         
-        XCTAssertEqual(result, "This month")
+        XCTAssertEqual(result, .day)
     }
     func testUnitForTimeFrameYear() {
         let moc = PersistenceController.previewMoc
         let avm = AnalyticsViewModel(moc: moc)
         avm.timeFrame = .year
         
-        let result = avm.labelForTimeFrame()
+        let result = avm.unitForTimeFrame()
         
-        XCTAssertEqual(result, "This year")
+        XCTAssertEqual(result, .month)
     }
     
     func testDuration() {
