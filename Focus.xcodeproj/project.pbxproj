@@ -35,6 +35,7 @@
 		DDAA988B2A57410900921DE9 /* SkipButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA988A2A57410900921DE9 /* SkipButtonView.swift */; };
 		DDAA988D2A57416100921DE9 /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA988C2A57416100921DE9 /* ResetButtonView.swift */; };
 		DDAA98902A5801E200921DE9 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA988F2A5801E200921DE9 /* NotificationService.swift */; };
+		DDB6E94E2B5FF854005D8494 /* FocusSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6E94D2B5FF854005D8494 /* FocusSession.swift */; };
 		DDBFD1012A8CF2EA0020DC57 /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1002A8CF2EA0020DC57 /* CountdownTests.swift */; };
 		DDBFD1032A8D176B0020DC57 /* AnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1022A8D176B0020DC57 /* AnalyticsTests.swift */; };
 		DDBFD1052A8D19770020DC57 /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1042A8D19770020DC57 /* AnalyticsViewModel.swift */; };
@@ -102,6 +103,7 @@
 		DDAA988A2A57410900921DE9 /* SkipButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButtonView.swift; sourceTree = "<group>"; };
 		DDAA988C2A57416100921DE9 /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
 		DDAA988F2A5801E200921DE9 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		DDB6E94D2B5FF854005D8494 /* FocusSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSession.swift; sourceTree = "<group>"; };
 		DDBFD1002A8CF2EA0020DC57 /* CountdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTests.swift; sourceTree = "<group>"; };
 		DDBFD1022A8D176B0020DC57 /* AnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTests.swift; sourceTree = "<group>"; };
 		DDBFD1042A8D19770020DC57 /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				DDA4B6FE2A4A27AC004C56FE /* Persistence.swift */,
 				DD9760F72A5369230032216F /* Constants.swift */,
 				DDE2CF942B588C48009B7A51 /* Session */,
+				DDB6E94D2B5FF854005D8494 /* FocusSession.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB6E94E2B5FF854005D8494 /* FocusSession.swift in Sources */,
 				DDAA98872A56A8D700921DE9 /* FocusStageDotsView.swift in Sources */,
 				DD9901052A83A6BF0051F757 /* Date+StartEnd.swift in Sources */,
 				DD9760F82A5369230032216F /* Constants.swift in Sources */,

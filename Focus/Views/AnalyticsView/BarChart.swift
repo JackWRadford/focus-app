@@ -8,24 +8,6 @@
 import SwiftUI
 import Charts
 
-struct FocusSession: Identifiable {
-    var date: Date
-    var duration: Int
-    var id = UUID()
-}
-
-extension FocusSession {
-    static func randomTestData() -> [FocusSession] {
-        var data: [FocusSession] = []
-        (0..<7).forEach { index in
-            let date = Calendar.current.date(byAdding: .day, value: -1 * index, to: .now) ?? Date()
-            let duration = Int.random(in: 0..<121)
-            data.append(.init(date: date, duration: duration))
-        }
-        return data
-    }
-}
-
 struct BarChart: View {
     let data: [FocusSession]
     let unit: Calendar.Component
