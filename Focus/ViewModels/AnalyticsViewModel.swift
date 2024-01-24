@@ -82,13 +82,6 @@ class AnalyticsViewModel: ObservableObject {
         return "\(timeStringFrom(diff: sum, showUnits: true, allowedUnits: [.hour, .minute]))"
     }
     
-    /// Returns the duration between the `startDate` and `endDate`
-    func duration(from startDate: Date?, to endDate: Date?) -> String {
-        guard let startDate, let endDate else {return ""}
-        let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
-        return "\(timeStringFrom(diff: diff, showUnits: true, allowedUnits: [.hour, .minute]))"
-    }
-    
     /// Convert  `FetchedResults<Session>` data to `[FocusSession]` for the Chart.
     /// Always covers the `timeFrameDates` range.
     /// If the `timeFrame` is `.day` then the data is sorted into hours from 00:00 to 23:00

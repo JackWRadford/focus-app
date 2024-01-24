@@ -11,17 +11,10 @@ struct SessionsListView: View {
     @EnvironmentObject private var analyticsViewModel: AnalyticsViewModel
     
     var body: some View {
-        Section("Focus Data") {
+        Section {
             if analyticsViewModel.sessions.count != 0 {
                 ForEach(analyticsViewModel.sessions) { session in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Start  \(session.startDateString)")
-                            Text("End    \(session.endDateString)")
-                        }
-                        Spacer()
-                        Text(analyticsViewModel.duration(from: session.startDate, to: session.endDate))
-                    }
+                    SessionsListItemView(session)
                 }
             } else {
                 Text("No focus data")

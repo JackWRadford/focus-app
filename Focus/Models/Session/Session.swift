@@ -25,7 +25,15 @@ extension Session {
         userFacingString(for: endDate)
     }
     
-    // MARK: - Functions
+    /// Returns the duration between the startDate and endDate.
+    var duration: String {
+        guard let startDate, let endDate else {return ""}
+        let diff = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
+        return "\(timeStringFrom(diff: diff, showUnits: true, allowedUnits: [.hour, .minute]))"
+    }
+    
+    // MARK: - Private Functions
+    
     private func userFacingString(for date: Date?) -> String {
         return date?.formatted(date: .numeric, time: .shortened) ?? "Unknown"
     }

@@ -109,41 +109,6 @@ final class AnalyticsTests: XCTestCase {
         XCTAssertEqual(result, .month)
     }
     
-    func testDuration() {
-        let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(moc: moc)
-        avm.timeFrame = .year
-        let calendar = Calendar.current
-        let now = Date.now
-        let from = calendar.date(byAdding: .minute, value: -175, to: now)!
-        
-        let result = avm.duration(from: from, to: now)
-        
-        XCTAssertEqual(result, "2h 55m")
-    }
-    func testNegativeDuration() {
-        let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(moc: moc)
-        avm.timeFrame = .year
-        let calendar = Calendar.current
-        let now = Date.now
-        let from = calendar.date(byAdding: .minute, value: 175, to: now)!
-        
-        let result = avm.duration(from: from, to: now)
-        
-        XCTAssertEqual(result, "-2h 55m")
-    }
-    func testZeroDuration() {
-        let moc = PersistenceController.previewMoc
-        let avm = AnalyticsViewModel(moc: moc)
-        avm.timeFrame = .year
-        let now = Date.now
-        
-        let result = avm.duration(from: now, to: now)
-        
-        XCTAssertEqual(result, "0m")
-    }
-    
     func testFocusSessionDataForDayTimeFrame() {
         let moc = PersistenceController.previewMoc
         let avm = AnalyticsViewModel(moc: moc)

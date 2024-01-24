@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD0472DD2B61D50900F156A3 /* SessionsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0472DC2B61D50900F156A3 /* SessionsListItemView.swift */; };
+		DD0472DF2B61D85A00F156A3 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0472DE2B61D85A00F156A3 /* SessionTests.swift */; };
 		DD8069132A8597DC003982AE /* SingleStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8069122A8597DC003982AE /* SingleStatView.swift */; };
 		DD9760F52A51FC4F0032216F /* TimerStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9760F42A51FC4F0032216F /* TimerStage.swift */; };
 		DD9760F82A5369230032216F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9760F72A5369230032216F /* Constants.swift */; };
@@ -70,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD0472DC2B61D50900F156A3 /* SessionsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsListItemView.swift; sourceTree = "<group>"; };
+		DD0472DE2B61D85A00F156A3 /* SessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
 		DD8069122A8597DC003982AE /* SingleStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStatView.swift; sourceTree = "<group>"; };
 		DD9760F42A51FC4F0032216F /* TimerStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStage.swift; sourceTree = "<group>"; };
 		DD9760F72A5369230032216F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				DD8069122A8597DC003982AE /* SingleStatView.swift */,
 				DD9901062A83CF9F0051F757 /* BarChart.swift */,
 				DDE2CF9D2B59C646009B7A51 /* TimeFramePickerView.swift */,
+				DD0472DC2B61D50900F156A3 /* SessionsListItemView.swift */,
 			);
 			path = AnalyticsView;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 				DDF81DDB2A8CE9EF0052B409 /* FormatterTests.swift */,
 				DDBFD1002A8CF2EA0020DC57 /* CountdownTests.swift */,
 				DDBFD1022A8D176B0020DC57 /* AnalyticsTests.swift */,
+				DD0472DE2B61D85A00F156A3 /* SessionTests.swift */,
 			);
 			path = FocusTests;
 			sourceTree = "<group>";
@@ -487,6 +493,7 @@
 				DDA4B6F62A4A27AB004C56FE /* FocusApp.swift in Sources */,
 				DDE2CF9A2B597E44009B7A51 /* NotificationToggleView.swift in Sources */,
 				DDA4B72B2A4CE0FB004C56FE /* SettingsViewModel.swift in Sources */,
+				DD0472DD2B61D50900F156A3 /* SessionsListItemView.swift in Sources */,
 				DDAA988B2A57410900921DE9 /* SkipButtonView.swift in Sources */,
 				DDA4B7312A4E054A004C56FE /* HideKeyboard.swift in Sources */,
 				DDA4B72F2A4D77A4004C56FE /* TextFieldSettingView.swift in Sources */,
@@ -503,6 +510,7 @@
 				DDF81DDC2A8CE9EF0052B409 /* FormatterTests.swift in Sources */,
 				DDBFD1032A8D176B0020DC57 /* AnalyticsTests.swift in Sources */,
 				DDA4B70D2A4A27AC004C56FE /* FocusTests.swift in Sources */,
+				DD0472DF2B61D85A00F156A3 /* SessionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
