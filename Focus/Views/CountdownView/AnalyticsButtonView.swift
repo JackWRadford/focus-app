@@ -20,7 +20,7 @@ struct AnalyticsButtonView: View {
     
     var body: some View {
         NavigationLink {
-            AnalyticsView(analyticsVM: AnalyticsViewModel(moc: moc))
+            AnalyticsView(analyticsVM: analyticsVM)
         } label: {
             Image(systemName: "chart.pie.fill")
                 .foregroundColor(countdownVM.isCounting ? .secondary : .primary)
