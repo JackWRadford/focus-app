@@ -42,7 +42,7 @@ extension PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        generatePreviewDate(viewContext)
+        generatePreviewData(viewContext)
         return result
     }()
     
@@ -51,7 +51,7 @@ extension PersistenceController {
     /// Generates some Sessions and saves them to the given viewContext.
     ///
     /// - Parameter viewContext: The NSManagedObjectContext to use.
-    static private func generatePreviewDate(_ viewContext: NSManagedObjectContext) {
+    static private func generatePreviewData(_ viewContext: NSManagedObjectContext) {
         let calendar = Calendar.current
         for index in 0..<500 {
             let end = calendar.date(byAdding: .hour, value: -4 * index, to: .now) ?? Date()
